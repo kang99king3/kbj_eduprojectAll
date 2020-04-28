@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>15.목록삭제하기</title>
+<script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
+<script type="text/javascript" src="js/jquery.easing.1.3.js"></script>
+<script type="text/javascript">
+/*
+ 	1. 클래스속성이 delete인 이미지 태그를 클릭하면 해당 부모태그(div)를  slideUp효과로 사라지게 만들기
+ 	이때 easing효과 중 "easeOutBounce" 적용하기
+ 
+ 	2. "보이기"버튼을 클릭하면 사라진  요소 모두 나타나게 만들기
+ */
+	$(function(){
+		$(".delete").click(function(){
+			$(this).parent().slideUp(1000,"easeOutBounce",function(){alert("aa")});
+		});
+	});
+</script>
+<style type="text/css">
+	body{
+		margin: 10px auto;
+		width: 470px;
+	}
+	h3{
+		margin: 0;
+		padding:0 0.3em;
+	}
+	
+	p{
+		margin: 0;
+		padding: 0 0.5em;
+	}
+	
+	.pane{
+		background-color: #edf5e1;
+		padding:10px 20px 10px;
+ 		position: relative; 
+		border-top: solid 2px #c4df9b;
+	}
+	
+	.pane .delete{
+		position: absolute;
+		top:10px;
+		right: 10px;
+		cursor: pointer;
+	}
+</style>
+</head>
+<body>
+	<button id="showBtn">보이기</button>
+	<div class="pane">
+		<h3>What is HTML5?</h3>
+		<p>박 위원은 "월드컵에 9회 연속 지출하긴 했지만 1986년 월드컵 이후 9번의 대표팀 중 가장 전력이 떨어지는
+			팀이라는 현실을 인식해야 한다"며 "아시아 최강자였다는 지위 다 잊고 우리가 약하다고 하는 전제에서 출발해야 한다"고
+			꼬집었다.
+		</p>
+		<img src="img/btn-delete.gif" alt="삭제" class="delete">
+	</div>
+	<div class="pane">
+		<h3>What is CSS?</h3>
+		<p>김대길 KBSN 축구 해설위원도 "예전처럼 아시아지역에서 우리나라-이란-일본- 호주-사우디 이런 식의 판도는
+			이제는 아니다"라며 "다른 국가들이 급격히 추격하고 있고 격차가 없어졌다"고 진단했다.
+		</p>
+		<img src="img/btn-delete.gif" alt="삭제" class="delete">
+	</div>
+	<div class="pane">
+		<h3>JavaScript is a Scripting Language</h3>
+		<p>한준희 KBS 해설위원은 "러시아월드컵 최종예선을 치르면서 한국의 기본 전술은 '선수비 후역습'이 됐지만,
+			수비로부터 안정적인 빌드업이 제대로 안 되고 역습 상황에서 패턴 플레이도 이뤄지지 않아 힘겨운 상황을 겪어야 했다"고
+			혹평했다.
+		</p>
+		<img src="img/btn-delete.gif" alt="삭제" class="delete">
+	</div>
+	<div class="pane">
+		<h3>What is jQuery?</h3>
+		<p>신 교수는 "대부분 중국에 나간 수비진을 포함해 해외파들이 소속팀에서 경기에 나서지 못하면서 이는 결국 대표팀
+			경기력으로도 이어졌다"며 "K리그는 높지 않은 경기력과 승부 조작 등이 수년간 누적되면서 진흙탕이 돼 버렸다"고 진단했다.
+		</p>
+		<img src="img/btn-delete.gif" alt="삭제" class="delete">
+	</div>
+	<div class="pane">
+		<h3>What is JSON?</h3>
+		<p>동시에 박문성 위원은 "우리가 그동안 월드컵 본선에 나가면서 상대 팀 분석을 잘하지 못했고, 브라질월드컵에서는
+			예방주사 후유증이나 시차 문제로 컨디션이 좋지 않았던 만큼 상대 팀 분석이나 러시아 적응에도 주의를 기울여야 한다"고
+			강조했다.
+		</p>
+		<img src="img/btn-delete.gif" alt="삭제" class="delete">
+	</div>
+</body>
+</html>

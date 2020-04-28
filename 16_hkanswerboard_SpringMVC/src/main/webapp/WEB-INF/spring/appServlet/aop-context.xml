@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd">
+
+
+	<bean id="logAop" class="com.hk.ansboard.aop.LogExecute" />
+	
+	<aop:config>
+		<aop:pointcut 
+		expression="execution(* com.hk.ansboard.daos.AnsDaoImp.*(..))" id="daoLogPoint"/>
+		
+		<aop:aspect id="logAspect" ref="logAop">
+			<aop:before method="before" pointcut-ref="daoLogPoint"/>
+			<aop:after-returning pointcut-ref="daoLogPoint" method="afterReturning"/>
+			<aop:after-throwing pointcut-ref="daoLogPoint" method="daoError"/>
+		</aop:aspect>
+	
+	</aop:config>
+</beans>
+
+
+
+
+
+
+
+
+

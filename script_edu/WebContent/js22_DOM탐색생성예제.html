@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+	.btn{
+		width: 100px; background-color: yellow;
+		text-align: center;
+		cursor: pointer;
+	}
+</style>
+<script type="text/javascript">
+	function testSearch01(){
+		var p01=document.getElementsByTagName("p")[0];
+// 		p01.parentNode.style.backgroundColor="orange";
+
+		var styleAttr=document.createAttribute("style");
+		styleAttr.nodeValue="background-color:red;";
+// 		var div=p01.parentNode;
+		p01.parentNode.setAttributeNode(styleAttr);
+// 		p01.parentNode.setAttribute("style","background-color:red;");
+	}
+	
+	function testSearch02(){
+// 		var p01=document.getElementsByTagName("div")[4].childNodes[3];
+		var p01=document.body.lastElementChild.childNodes[3];
+		p01.style.fontSize="20pt";
+		p01.title="속성넣기";
+		p01.setAttribute("title", "속성넣기");
+	}
+	
+	function testCreate03(){
+		var div=document.createElement("div");//div태그생성
+		//첫번째버전
+// 		var p1=document.createElement("p");
+// 		var p2=document.createElement("p");
+// 		p1.textContent="test05";//<p>test05</p>
+// 		p2.textContent="test06";//<p>test06</p>
+		
+// 		div.appendChild(p1);
+// 		div.appendChild(p2);
+
+		//두번째버전
+// 		div.innerHTML="<p>test05</p><p>test06</p>";
+
+		//세번째버전
+		for (var i = 0; i < 2; i++) {
+			div.appendChild(document.createElement("p"));
+			div.children[i].textContent="test0"+(i+5);
+		}
+		
+		document.body.appendChild(div);//생성된 div태그를 body에 추가
+	}
+</script>
+</head>
+<body>
+<h1>1.test01내용의 p태그를 포함한 div태그의 배경색을 적용하세요.(parentNode속성사용)</h1>
+<div onclick="testSearch01()" class="btn">적용하기</div>
+<h1>2.마지막 div태그에 포함된 test04태그의 폰트 크기를 20pt로 적용하세요(childNodes사용)</h1>
+<div onclick="testSearch02()"  class="btn">적용하기</div>
+<h1>3.p태그(test05)/p태그(test06)를 포함하는 div태그를 body마지막에 추가하세요
+													(createElement사용) </h1>
+<div onclick="testCreate03()"  class="btn">적용하기</div>
+<div>
+	<p>test01</p>
+	<p>test02</p>
+</div>
+<div>
+	<p>test03</p>
+	<p>test04</p>
+</div>
+</body>
+</html>
+
+
+

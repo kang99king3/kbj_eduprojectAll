@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="js/jquery-3.4.1.js"></script>
+<script type="text/javascript">
+	$(function(){
+		$("#dataClick").click(function(){
+			var empId=$("input[name=inId]").val();
+			if(isNaN(empId)){
+				alert("숫자만 입력하세요!!");
+			}else{
+				$.ajax({
+					url:"emplist.xml",
+					dataType:"xml",
+					success:function(data){
+						var empRows=$(data).find("ROW");//[ROW,ROW,ROW....]
+						
+						var table=null;
+						if(empId==null||empId==""){
+							table=createTable(empRows);
+						}else{
+							var eid=empRows.find("EMPLOYEE_ID:contains("+empId+")").parent();
+							//eid[row,row,row..]
+							table=createTable(eid);
+						}
+						
+						$("#result").html(table);
+					}//success종료
+				});//ajax 종료
+			}
+		});
+	});
+	
+	function createTable(empRows){
+		var table=$("<table border='1'>");
+		
+		//데이터를 설명할 제목 row와column을 생성하는 작업
+		//컬럼정의하기: <p> --> $("p").prop("tagName") --> "p" 태그 이름을 반환
+		var tr=$("<tr>");
+		var childs=empRows.first().children();
+		for (var i = 0; i < childs.length; i++) {
+			var td=$("<td>").text(childs.eq(i).prop("tagName"));
+			tr.append(td);
+		}
+		table.append(tr);
+		
+		
+		//데이터가 저장되는 row와 column들을 생성 작업
+		for (var i = 0; i < empRows.length; i++) {
+			var tr=$("<tr>");//<tr><td>val</td><td>val</td>...</tr>
+			for (var j = 0; j < empRows.eq(0).children().length; j++) {
+				var td=$("<td>").append(empRows.eq(i).children().eq(j).text());
+				tr.append(td);
+			}
+			table.append(tr);
+		}
+		return table;
+	}
+	
+	function jsonTest(){
+		$.ajax({
+			url:"data.json",
+			dataType:"json",
+			success:function(data){
+// 				{"ROW":[{ },{ }]}
+// 				alert(data.ROW[0].LAST_NAME);
+				alert(data["ROW"][0]["LAST_NAME"]);
+			}
+		});
+	}
+</script>
+<style type="text/css">
+	tr:nth-child(odd) {
+		background: orange;
+	}
+</style>
+</head>
+<body>
+<h1>json객체를받아서 처리하기</h1>
+<button onclick="jsonTest()">조회</button>
+<h1>사원정보조회</h1>
+<input type="text" name="inId"/>
+<button id="dataClick">정보조회하기</button>
+<div id="result"></div>
+</body>
+</html>
+
+

@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>float사용하기</title>
+<style type="text/css">
+	#test h1{float: left; background: orange; }
+	hr{clear: both;}
+	h1,p,ul{margin: 0; padding:0;} /*초기화 작업: 브라우저마다 기본적으로 마진과 패딩의 값이 설정되어 있는데 각각 다 다르다.*/
+	li{
+		list-style-type: none;
+		width: 150px;
+		text-align: center;
+		float:left;
+		margin-right: 10px;
+	}
+
+	.gallery h3{
+		padding:5px;
+	}
+	.gallery> li:nth-child(1) h3 {
+		background: #daa;
+	}
+	.gallery> li:nth-child(2) h3 {
+		background: #abc;
+	}
+	.gallery> li:nth-child(3) h3 {
+		background: #eba;
+	}
+	.gallery> li:nth-child(4) h3 {
+		background: #aa7;
+	}
+	.gallery> li > p{
+		text-align: justify;
+		padding: 10px;
+		font-size: 14px;
+	}
+	h1+p{
+		padding: 10px;
+	}
+	
+	#tea{
+		width: 800px;
+		padding: 30px;
+		border: 5px inset #bbb;
+/* 		overflow: auto; */
+/* 		position: relative; */
+/* 		height: 300px; */
+	}
+	#tea h1{
+		text-align: center;
+		margin-bottom: 10px;
+	}
+	.a{
+		width: 47%;
+		border: 3px solid green;
+		float: left;
+	 }
+	 .b{
+		width: 47%;
+		border: 3px solid brown;
+		float: right;
+	 }
+	
+/* 	가상으로 요소를 만들어서 css속성적용하기 */
+	#tea:after {
+ 		content: ""; 
+ 		clear: both; 
+		display: block; 
+/* 		height: 300px; */
+/* 		background-image: url("img/testimg.JPG"); */
+/* 		opacity: 0.2; */
+/* 		width: 800px; */
+/* 		position: absolute; */
+	}
+</style>
+</head>
+<body>
+<h1>float 기본 개념</h1>
+<div id="test">
+	<h1>float개념</h1>
+	<p>블럭요소들을 가로로 나열시킬때 사용하며, 속성값에는 left,right,none이 있다.
+	   보통 목록태그의 메뉴를 만들때 사용하거나, 레이아웃을 작성할때 활용된다.
+	   그리고 반드시 clear 속성을 이용한 float해제방법을 같이 알아둬야 한다.</p>
+</div>
+<hr>
+<h1>양현종-이영하 아성 흔들 토종선발 있나?</h1>
+<p>스프링캠프의 계절이 돌아왔다.
+ KBO리그 10개구단은 29일부터 31일까지<br/> 순차적으로 2020시즌 담금질을 위한 <strong>스프링캠프지</strong>로 떠난다. </p>
+<ul class="gallery">
+	<li>
+		<h3>KIA타이거즈</h3>
+		<p>지난해 성적을 기준으로 살펴보면 KIA와 두산이 가장 안정적이다. 특히 KIA는 ‘대투수’ 양현종(32)이 건재하다. </p>
+	</li>
+	<li>
+		<h3>LG트윈스</h3>
+		<p> 지난해 투수 평균자책점 상위 10위 이내에 세 명의 토종 선발 투수가 이름을 올렸다.</p>
+	</li>
+	<li>
+		<h3>키움히어로즈</h3>
+		<p> 중에서도 양현종은 외국인 투수들을 모두 제치고 2.29로 평균자책점 1위에 당당히 이름을 올렸다. 16승은 다승 5위 수준으로</p>
+	</li>
+	<li>
+		<h3>롯데자이언츠</h3>
+		<p>지난해 양현종보다 더 많은 승리를 따낸 토종 선발은 김광현(32·세인트루이스)과 이영하(23·두산) 뿐이다. </p>
+	</li>
+</ul>
+<hr/>
+<h1>clear를 이용하는 방법과  overflow를 이용해서 float을 해제하는 방법</h1>
+<div id="tea">
+	<h1>녹차와 커피</h1>
+	<p class="a">지난해 투수 평균자책점 상위 10위 이내에 세 명의 토종 선발 투수가 이름을 올렸다.</p>
+	<p class="b">중에서도 양현종은 외국인 투수들을 모두 제치고 2.29로 평균자책점 1위에 당당히 이름을 올렸다.</p>
+
+</div>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

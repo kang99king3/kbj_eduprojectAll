@@ -1,0 +1,13 @@
+DEBUG [2020-04-01 16:09:56,311] - Logging initialized using 'class org.apache.ibatis.logging.commons.JakartaCommonsLoggingImpl' adapter.
+DEBUG [2020-04-01 16:09:56,466] - Logging initialized using 'class org.apache.ibatis.logging.log4j.Log4jImpl' adapter.
+DEBUG [2020-04-01 16:09:56,483] - PooledDataSource forcefully closed/removed all connections.
+DEBUG [2020-04-01 16:09:56,484] - PooledDataSource forcefully closed/removed all connections.
+DEBUG [2020-04-01 16:09:56,484] - PooledDataSource forcefully closed/removed all connections.
+DEBUG [2020-04-01 16:09:56,484] - PooledDataSource forcefully closed/removed all connections.
+DEBUG [2020-04-01 16:09:56,609] - Opening JDBC Connection
+DEBUG [2020-04-01 16:09:58,493] - Created connection 881750860.
+DEBUG [2020-04-01 16:09:58,498] - ==>  Preparing: INSERT INTO CALBOARD VALUES(CALBOARD_SEQ.NEXTVAL, ?,?,?,?,SYSDATE) 
+DEBUG [2020-04-01 16:09:58,601] - ==> Parameters: hk(String), 일정추가합니다.(String), ㅋㅋㅋ(String), 202004011609(String)
+DEBUG [2020-04-01 16:09:58,612] - <==    Updates: 1
+DEBUG [2020-04-01 16:09:58,612] - Closing JDBC Connection [oracle.jdbc.driver.T4CConnection@348e734c]
+DEBUG [2020-04-01 16:09:58,612] - Returned connection 881750860 to pool.

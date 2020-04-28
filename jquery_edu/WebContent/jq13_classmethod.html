@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="js/jquery-3.4.1.js"></script>
+<script type="text/javascript">
+	/*
+		클래스속성관련 메서드 4개
+		-addClass():class속성을 엘리먼트에 추가(기존class값을 유지하면서 추가됨)
+		-removeClass():class속성을 엘리먼트에서 삭제
+		-hasClass():class속성이 존재하는지 여부 확인-->true/false반환
+		-toggleClass(): addClass()와 removeClass()의 기능을 동시에 가지고 있음
+	*/
+	$(function(){
+		$("img").click(function(){
+			//img태그를 클릭했을때 이미지가 작은경우 크게 해주고 큰경우 작게해주기
+			//addSize속성을 가지고 있으면 큰이미지임
+// 			if($(this).hasClass("addSize")){//addSize 클래스속성이 있으면 삭제
+// 				$(this).removeClass("addSize").attr("title","이미지축소");				
+// 			}else{ // 없으면 추가
+// 				$(this).addClass("addSize").attr("title","이미지확대");				
+// 			}
+			
+			$(this).toggleClass("addSize");
+// 			$(this).attr("class","addSize");
+		});
+		
+		$("#btn").click(function(){
+			onOff();
+		});
+	});
+		
+	function onOff(){
+		$("img").toggleClass("onOffImg");
+	}	
+</script>
+<style type="text/css">
+	img{width: 200px; height: 200px;}
+	.addSize{width:300px; height: 300px;}
+	.onOffImg{display:none;}
+</style>
+</head>
+<body>
+<button id="btn" >이미지on/off</button><br>
+<img src="img/yang.JPG" alt="test" title="이미지1" class="test"/>
+<img src="img/yang.JPG" alt="test" title="이미지2" class="test"/>
+<img src="img/yang.JPG" alt="test" title="이미지3" class="test"/>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

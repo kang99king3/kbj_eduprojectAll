@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>2.selector표현식</title>
+<script type="text/javascript" src="js/jquery-3.4.1.js"></script>
+<script type="text/javascript">
+	$(function(){
+		$("#d1 > ul > li:eq(0)").click(function() {
+// 			$(this).find("span").css("color", "red");
+			$("span").css("color", "red");
+		});	
+		
+		$("#d1 > ul > li:eq(1)").click(function(){
+			$("#t1").css("color","blue");
+		});
+		
+		$("#d1 > ul > li:eq(2)").click(function(){
+			$(".t2").css("background-color","yellow");
+		});
+		
+		$("#d1 > ul > li:eq(3)").click(function(){
+			$("li span").css("background-color","orange");
+		});
+		
+		$("#d1 > ul > li:eq(4)").click(function(){
+			$("b > span").css({"color":"red","font-size":"15pt"});
+// 			$("li > span").css("background-color","blue");
+		});
+		
+		$("#d1 > ul > li:eq(5)").click(function(){
+// 			$("li:nth-child(even)").css("color","green");
+			$("li:nth-child(2n-3)").css("color","green");
+			
+			$("li:first-child").css("color","blue");
+			$("li:last-child").css("color","pink");
+// 			$("li[id]") 속성으로 선택했을때
+//			$("li[id=t1]") 속성 id의값이 't1'인 요소를 선택할때
+		});
+	});
+	
+
+	
+</script>
+</head>
+<body>
+<h1>셀렉터표현식</h1>
+<div id="d1">
+	<span>나는 포함안돼~~~</span>
+	<ul>
+		<li><span>tag이름으로 선택</span></li>
+		<li id="t1">ID로 선택</li>
+		<li class="t2">class로 선택</li>
+		<li><span>포함관계로 선택</span></li>
+		<li><b><span>부모/자식관계로 선택</span></b></li>
+		<li>:nth-child(n/odd/even)</li>
+		<li>:first-child</li>
+		<li>:last-child</li>
+	</ul>
+</div>
+</body>
+</html>
+
+

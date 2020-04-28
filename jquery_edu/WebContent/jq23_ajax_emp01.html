@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>23.비동기식 처리(ajax()사용하기)</title>
+<script type="text/javascript" src="js/jquery-3.4.1.js"></script>
+<style type="text/css">
+	table{width:400px;}
+	table tr:nth-child(odd) {
+		background-color: orange;
+	}
+	fieldset{width: 400px;}
+	input{border-radius: 5px;}
+</style>
+<script type="text/javascript">
+	$(function(){
+		$("#emp_search").click(function(){
+			var empId=$("input[name=empid]").val();//조회할 사원번호 구하기
+			if(!isNaN(empId)){
+				$.ajax({
+					url:"emplist.xml",  //요청할 페이지의 url을 설정
+					method:"post",      //요청방식설정
+					dataType:"xml",     //응답에 의해 받게 될 데이터의 타입을 설정
+					data:"id=hk&address=ddkd",       //요청할 페이지에 전달할 데이터 설정
+					success:function(data){
+						//data는 xml객체 
+	// 					alert(data);
+						//     xml-> rowset   -> row -> 개수
+	// 					alert(data.children[0].children.length);
+	// 					alert($(data).find("EMPLOYEE_ID").eq(0).text());
+						// alert(empInfo.children().eq(1).text());
+						
+						//contains로 사용했을때 12--> 112으로 조회되는 문제
+// 						var empInfo=$(data).find("EMPLOYEE_ID:contains("+empId+")").parent();
+	
+						var empInfo=null;
+						$(data).find("EMPLOYEE_ID").each(function(){
+							if($(this).text()==empId){
+								empInfo=$(this).parent();
+								return;
+							}
+						});
+						
+						//검색결과가 없다면
+						if(empInfo==null){
+							alert("검색결과가 없습니다.");
+							$("table input").val("");//검색결과가 없으므로 전에 출력된 내용은 지우기
+						}else{
+							$("table input").each(function(i){
+								$(this).val(empInfo.children().eq(i).text());
+							});
+						}
+					},  //데이터를 받는데 성공했다면 기능을 실행해라
+					error:function(request,error){//데이터를 받는데 실패했다면 
+						alert("서버통신실패!! "+request.status+","+error);
+					}
+				});//ajax()종료
+			}else{
+				alert("숫자만 입력하세요");
+			}	
+		});
+	});
+</script>
+</head>
+<body>
+<h1>사원정보가져오기(1명에 대한 정보)</h1>
+<fieldset>
+	<legend>사원정보조회</legend>
+	<label>사원번호:</label><input type="text" name="empid"/>
+	<input type="button" value="조회" id="emp_search"/>
+</fieldset>
+<table>
+	<tr>
+		<td>사원번호</td>
+		<td><input type="text" name="empNum" readonly="readonly" /></td>
+	</tr>
+	<tr>
+		<td>이름</td>
+		<td><input type="text" name="lastname" readonly="readonly" /></td>
+	</tr>
+	<tr>
+		<td>이메일</td>
+		<td><input type="text" name="email" readonly="readonly" /></td>
+	</tr>
+	<tr>
+		<td>전화번호</td>
+		<td><input type="text" name="phone" readonly="readonly" /></td>
+	</tr>
+	<tr>
+		<td>입사일</td>
+		<td><input type="text" name="hire" readonly="readonly" /></td>
+	</tr>
+</table>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

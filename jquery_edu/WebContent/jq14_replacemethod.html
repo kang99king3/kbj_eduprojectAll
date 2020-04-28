@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="js/jquery-3.4.1.js"></script>
+<script type="text/javascript">
+	$(function(){
+		$("button").eq(0).click(function(){
+			//타겟이 앞에 온다(탐색한 엘리먼트가 앞에 작성된다.)
+			$("div p").replaceWith("<b>내용을 바꾼다</b>");
+		});
+		
+		$("button").eq(1).click(function(){
+			//타겟이 뒤에 온다.(탐색한 엘리먼트가 뒤에 작성된다.)
+			$("<a href='#'>내용이 바뀌죠?</a>").replaceAll("div p");
+		});
+	});
+</script>
+</head>
+<body>
+<div>
+	<p>DOM대체</p>
+</div>
+<button>바꾸기(replaceWith)</button>
+<button>바꾸기(replaceAll)</button>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+

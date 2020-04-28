@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>6.객체의 사용</title>
+<script type="text/javascript">
+	function jsonTest(){
+		//객체리터럴: key:value 형태로 데이터 저장(Json)
+		var jsonData={
+			"a":1,
+			"b":2,
+			"c":3,
+			"d":["가","나",{"다":[1,2,3,45,6,8]},"라"],
+			"e":function(){
+				console.log("제이슨~~13일 금요일");
+			}
+		}
+		
+		alert(jsonData["d"][2]["다"][3]);
+	}
+	
+	function ObjectCons(){
+		var val01=30;//외부에서 바로 접근할 수 없음 var로 선언하면
+		this.val02=10;
+		this.getVal01=function(){
+			return val01;//this.getVal01에서 접근해서 외부에 전달
+		}
+		this.method=function(){
+			alert("함수");
+		}
+	}
+	
+	function objTest(){
+		
+		ObjectCons.prototype.test=function(){
+			this.getVal01();
+			this.val02;
+			alert("함수추가");
+		}
+		
+		var obj=new ObjectCons();
+			var val01=obj.getVal01();
+			console.log(val01+","+obj.val02);
+			obj.method();
+		//함수를 저장해 놓은것을 다른 변수에 저장해서 쓸수 있다.
+		var mt=obj.method;	
+			mt();
+			obj.test();
+			
+	}
+</script>
+</head>
+<body>
+<button onclick="jsonTest()">json객체실행</button>
+<button onclick="objTest()">객체생성자실행</button>
+</body>
+</html>
+
+
+
+

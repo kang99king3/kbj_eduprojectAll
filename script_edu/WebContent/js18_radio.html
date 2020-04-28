@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>18.radio버튼사용하기</title>
+<script type="text/javascript">
+	function radioChk(){
+		var result="";
+		var doc=document.getElementsByName("food");
+		for (var i = 0; i < doc.length; i++) {
+			if(doc[i].checked){
+				result=doc[i].value;
+				break;
+			}
+		}
+		
+		if(result==""){
+			alert("반드시 체크해야 됩니다.~~");
+			return false;// false를 리턴하면 submit전송이 취소된다.
+		}else{
+			return true;
+		}
+	}
+	
+	function submitGo(){
+		//input type을 submit으로 하지 않고 자바스크립트에서 전송하는 방법: submit()
+		var result="";
+		var doc=document.getElementsByName("food");
+		for (var i = 0; i < doc.length; i++) {
+			if(doc[i].checked){
+				result=doc[i].value;
+				break;
+			}
+		}
+		
+		if(result==""){
+			alert("반드시 체크해야 됩니다.~~!");
+			document.forms[0].reset();
+		}else{
+// 			document.getElementsByTagName("form")[0]
+			document.forms[0].submit();
+		}
+	}
+</script>
+</head>
+<body>
+<!-- <form action="js17_checkbox.html" method="get" onsubmit="return radioChk()"> -->
+<form action="js17_checkbox.html" method="get">
+	<fieldset>
+		<legend>가장 먹고 싶은 음식은?</legend>
+		<input type="radio" name="food" value="라면"><label>라면</label>
+		<input type="radio" name="food" value="만두"><label>만두</label>
+		<input type="radio" name="food" value="불고기"><label>불고기</label>
+<!-- 		<input type="submit" value="확인"/> -->
+		<input type="button" value="확인" onclick="submitGo()"/>
+	</fieldset>
+</form>
+<input type="text" id="tt"  style="text-align: right; width: 5%;" />
+<input type="button" onclick="kk(this.value)" value="1">
+<input type="button" onclick="kk(this.value)" value="2">
+<script type="text/javascript">
+function kk(num){
+	document.getElementById("tt").focus();
+	document.getElementById("tt").value+=num;
+}
+</script>
+</body>
+</html>
+
+
+
+
+
+

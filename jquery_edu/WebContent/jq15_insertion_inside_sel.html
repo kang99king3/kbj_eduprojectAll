@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="js/jquery-3.4.1.js"></script>
+
+<style type="text/css">
+	div{
+		border: 1px solid red;
+	}
+	.append{border:1px dotted orange;}
+	.prepend{border:1px dotted blue;}
+</style>
+<script type="text/javascript">
+	/*
+		타겟이 앞에 작성된다.
+		prepend():자식 요소중에 앞에 추가되는 기능
+		append():자식 요소중에 가장 뒤에 추가되는 기능
+		
+		타겟이 뒤에 작성된다. 
+		prependTo():기능은 동일
+		appendTo():기능은 동일 
+		
+		html(): 요소 내부의 html요소 --> 추가하거나 가져올수 있다.
+		text(): 요소 내부의 text요소 --> 동일
+		
+	*/
+	
+	$(function(){
+		$("button").eq(0).click(function(){
+			//div태그에다 바로 p태그를 만들어서 넣을 줄 거라면 1번 방법
+// 			$("div").prepend("<p class='prepend'>prepend</p>");//1번방법
+
+			//추가할 p태그를 일단 만들어 놓구 나중에 넣어 줄 거라면 2번 방법
+			 var $p=$("<p></p>").addClass("prepend").text("prepend");//2방법
+// 			 $("div").prepend($p);
+			 $($p).prependTo("div");
+			 
+// 			 var attr="prepend";
+// 			 var $p2=$("<p class='"+attr+"'>prepend</p>");//3번방법	
+		});
+		
+		$('button').eq(1).click(function(){
+			//javascript: appendChild(Node타입)--> appendChild("<p></p>") (x)
+// 			var div=document.getElementsByTagName("div")[0];
+// 			var newP=document.createElement("p");
+// 			newP.setAttribute("class", "append");
+// 			newP.textContent="append";
+// 			div.appendChild(newP);
+			// $("div").append("<p class='append'>append</p>");
+			$("<p class='append'>append</p>").appendTo("div");
+		});
+		
+		$("button").eq(2).click(function(){
+			//javascript: div.innerHTML -> get개념,  div.innerHTML="<b>" ->set개념
+			$("div").html("<b>html요소는 내부의 내용을 바꾼다</b>");//set개념
+			
+// 			alert(typeof $("div").html());//get개념
+			//html()메서드를 이용해서 내부 요소를 String으로 가져올수 있다.
+			var htmlParam=$("div").html();
+			$(this).html(htmlParam);//html()메서드를이용해 다시 적용해 볼 수 있다.
+		});
+		
+		$("button").eq(3).click(function(){
+			//text()메서드는 문자열에 html요소를 작성하면 텍스트로 해석된다.
+			$("div").text("<b>text요소는 내부 내용을 바꾼다.</b>");
+		});
+		
+		//엘리먼트 이동: 실제 body에 작성된 요소를 탐색해서 append하게 되면 이동된다.
+		$("button").eq(4).click(function(){
+			var $ele=$("div").children().first();
+			$("body").append($ele);
+		});
+	});
+</script>
+</head>
+<body>
+<button>prepend하기</button>
+<button>append하기</button>
+<button>html하기</button>
+<button>text하기</button>
+<button>DOM이동하기</button>
+<div>
+	<p>내부추가하기1</p>
+	<p>내부추가하기2</p>	
+</div>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+

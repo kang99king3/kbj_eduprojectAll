@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="js/jquery-3.4.1.js"></script>
+<style type="text/css">
+	div{
+		border: 2px solid red; 
+		width: 250px;
+		padding: 10px 10px;
+	}
+	p{background: yellow;}
+</style>
+<script type="text/javascript">
+	/*
+		엘리먼트 삭제하는 메서드
+		1.remove():타겟 요소를 삭제한다.
+		2.empty():타겟의 내부요소들을 모두 삭제한다. <div>내부요소삭제</div>
+		3.detach():잘라내기--> 삭제한 요소를 따로 저장할 수 있다.
+	*/
+	$(function(){
+		$("p:eq(0)").click(function(){
+// 			$("div").remove();//div요소를 삭제하면 포함한 모든요소도 같이 삭제됨
+			$(this).remove();
+		});
+		
+		$("p:eq(1)").click(function(){
+			$(this).parent().empty();
+		});
+		
+		$("p:eq(2)").click(function(){
+			var ele=$(this).detach();
+			ele.attr("style","background-color:blue;");
+			ele.append("<b>다시 추가하기</b>");
+			$("h1").html(ele);
+		});
+	});
+</script>
+</head>
+<body>
+<h1>엘리먼트 제거하기</h1>
+<div>
+	<p>타겟(dom탐색객체)삭제하기</p>
+	<p>내부요소를 모두 삭제하기(비우기)</p>
+	<p>잘라내기</p>
+</div>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="js/jquery-3.4.1.js"></script>
+<script type="text/javascript">
+	$(function(){
+		// css 적용: p:first,span,b{color:red;}
+		$("p:eq(0)").add("span").add("b").css("color","red");
+		
+		//div태그의 자식요소중에 클릭을 하면 클릭한 요소를 구해서 어떤 태그인지확인하고 
+		// 각각에 대해 CSS처리 
+		$("div").children().click(function(){
+			//click한 요소가 span태그이면
+			if($(this).is("span")){
+				alert("span태그를 클릭했어요!!");
+				$(this).css("color","orange");
+			}
+			//click한 요소가 p태그이면
+			if($(this).is("p")){
+				alert("p태그를 클릭했어요!!");
+				$(this).css("color","green");
+			}
+			//click한 요소가b태그이면
+			if($(this).is("b")){
+				alert("b태그를 클릭했어요!!");
+				$(this).css("color","blue");
+			}
+		});
+	});
+	
+	function test(obj){
+		//jquery객체 생성: 탐색  --> $("p")         js: getElementById()
+		//               생성 --> $("<p></p>")   js: createElement()
+		
+// 		obj.style.color="red";
+//    obj는 자바스크립트객체--->$(obj) jquery객체로 변환
+		$(obj).css("color","red");
+		alert(obj+" : "+$(obj));
+	}
+</script>
+<style type="text/css">
+/* 	p:first-child,span,b {color:red;} */
+</style>
+</head>
+<body>
+<div>
+	<p>add()</p>
+	<span>add:선택한 엘리먼트에 셀렉터표현식을 추가할때 사용한다.</span>
+	<p>is()</p>
+	<b>is:선택한 엘리먼트들 중에 구하는 엘리먼트가 있는지 확인한다.(반환값:true/false)</b>
+</div>
+<button onclick="test(this)">클릭</button>
+</body>
+</html>
+
+
+
+
+
+
+
+
+

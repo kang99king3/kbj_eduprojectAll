@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>4.DOM탐색메서드의 종류와 사용방법</title>
+<script type="text/javascript">
+	/*
+		DOM탐색메서드의 종류
+		1. getElementById("id속성") 값 하나만 반환 
+		2. getElementsByName("name속성") 배열로 반환
+		3. getElementsByTagName("tag이름") 배열로 반환
+		4. getElementsByClassName("class이름") 배열로 반환
+		5. querySelectorAll("tr td") 배열로 반환
+		6. querySelector("#id") 값 하나만 반환
+	*/
+	window.onload=function(){
+		
+	}
+	function searchId(){
+		var doc=document.getElementById("test1");//java에서 객체를 생성
+// 		doc.style.color='red';
+// 		doc.style.backgroundColor='blue';
+// 		alert(doc.innerHTML);
+// 		doc.innerHTML+="<b>이미지를 삽입</b>";
+		var img='<img src="img/testimg.JPG"/>';
+		doc.innerHTML=img;
+	}
+	function searchName(){
+		var doc=document.getElementsByName("test2");//[input,input,input]
+		doc[0].value="엘리먼트를 구했어요";
+		doc[1].type="checkbox";
+		doc[2].style.backgroundColor="red";
+	}
+	
+	function searchTagName(){
+		var doc=document.getElementsByTagName("p");//[p,p,p,p]
+		for (var i = 0; i < doc.length; i++) {
+			doc[i].style.color="blue";
+			doc[i].style.backgroundColor="red";
+			doc[i].style.fontSize="white";
+		}
+	}
+	
+	function searchClass(){
+		var doc=document.getElementsByClassName("test3")[0];
+		doc.style.background="yellow";
+	}
+</script>
+</head>
+<body>
+	<div>
+		<p>DOM탐색메서드</p>
+		<p onclick="searchId()"  id="test1"  >
+			1.엘리먼트의 ID를 탐색: 엘리먼트 하나를 선택(중복불가)
+		</p>
+		<p onclick="searchName()">2.엘리먼트의 name속성으로 탐색:엘리먼트 여러개를 선택(배열)
+			<br/><input type="text" name="test2"/>
+			<input type="text" name="test2"/>
+			<input type="text" name="test2"/>
+		</p>
+		<p onclick="searchTagName()">
+		3.엘리먼트의 태그 이름으로 탐색:엘리먼트 여러개를 선택(배열)</p>
+		
+		<p class="test3" onclick="searchClass()">
+		4.엘리먼트의 class속성으로 탐색:엘리먼트 여러개를 선택(배열)</p>
+		<p onclick="searchQuerySel()">5.selector표현식을 활용하여 탐색(querySelectorAll()):
+		   CSS의 셀렉터 표현식으로 여러개를 선택-반환(배열)</p>
+	</div>
+	<script type="text/javascript">
+		function searchQuerySel(){
+			var doc=document.querySelectorAll("p:last-child")[0];
+			doc.style.color="red";
+		}
+	</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+

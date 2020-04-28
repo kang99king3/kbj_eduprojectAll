@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>position속성</title>
+<style type="text/css">
+	#red,#green,#blue{
+		font-size: 60px;
+		text-align: center;
+		line-height: 300px;
+		color:white;
+		font-weight: bold;
+		transition: font-size 1s ;
+		cursor: pointer;
+	}
+	#red{
+		background-color: red;
+		width: 300px;
+		height: 300px;
+		border-radius: 150px;
+		position: absolute;
+		left:350px;
+		top:200px;
+		z-index: 99;
+	}
+	#green{
+		background-color: green;
+		width: 300px;
+		height: 300px;
+ 		border-radius: 150px;
+ 		position: absolute;
+		left:250px;
+		top:350px;
+		z-index: 80;
+	}
+	#blue{
+		background-color: blue;
+		width: 300px;
+		height: 300px;
+		border-radius: 150px;
+		position: absolute;
+		left:500px;
+		top:350px;
+		z-index: 50;
+	}
+	#container{
+		width: 800px;
+		height: 800px;
+		border: 1px solid black;
+		position: relative;
+		left:100px;
+		top:100px;
+	}
+	#red:hover {
+		z-index: 100;
+		font-size: 100px;
+	}
+	#green:hover {
+		z-index: 100;
+		font-size: 100px;
+	}
+	#blue:hover {
+		z-index: 100;
+		font-size: 100px;
+	}
+</style>
+</head>
+<body>
+<div id="container">
+	<div id="red">red</div>
+	<div id="green">green</div>
+	<div id="blue">blue</div>
+</div>
+</body>
+</html>
+
+
+
+
+

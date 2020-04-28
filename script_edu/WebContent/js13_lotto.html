@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>13.로또만들기</title>
+<script type="text/javascript">
+
+	//로또번호 랜덤하게 1~45까지 중에 하나 생성하는 기능
+	function makeBall(){
+		return Math.floor(Math.random()*45+1);
+	}
+	
+	function lottoBalls(){
+		var balls=new Array();
+		var count=0;
+		while(count<7){
+			var ball=makeBall();//랜덤한 숫자하나 생성 1~45중에서
+			if(balls.indexOf(ball)==-1){//중복된 숫자가 배열에 없다면
+				balls.push(ball);//배열에 생성된 숫자를 넣는다
+				count++;//생성된 숫자의 개수를 증가
+			}
+		}
+		return balls;
+	}
+	
+	function lottoPrint(){
+		var balls_7=lottoBalls();//숫자 7개가 저장되어 있는 배열을 구함
+// 		alert(balls_7);
+		//문제: 정렬된 당첨번호 6개와 보너스 번호1개로 나눠서 화면에 출력!! 1-3-10-23-30-33    7
+		//[1,3,2,5,6,10,33] 
+		//배열객체에 구현되어 있는 메서드중에 pop()를 사용하자
+		var balls_bonus=balls_7.pop();//맨끝에 33숫자를 가져옴
+		
+		balls_7.sort(compareNum);//크기순으로 정렬함
+		
+		var spans=document.getElementsByTagName("span");
+		spans[1].innerHTML=balls_7.join("-");
+		spans[3].innerHTML=balls_bonus;
+		
+		
+	}
+	
+// 	var compareNum=function(a,b){
+// 		return a-b;
+// 	}
+	
+	function compareNum(a,b){
+		return a-b;
+	}
+</script>
+</head>
+<body>
+<fieldset>
+	<legend>로또번호만들기</legend>
+	<span>로또번호:</span>
+	<span></span>
+	&nbsp;&nbsp;&nbsp;        
+	<span>보너스번호:</span>
+	<span></span>
+	<button onclick="lottoPrint()">생성</button>
+</fieldset>
+</body>
+</html>
+
+
+
+
+
+
+
+

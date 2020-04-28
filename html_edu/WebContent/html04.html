@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>폼관련요소</title>
+<script type="text/javascript">
+	onload=function(){
+		var labelId=document.getElementsByTagName("label")[0];
+		labelId.onclick=function(){
+// 			alert("어떤기능을");
+			this.nextElementSibling.disabled=false;
+		}
+	}
+</script>
+</head>
+<body>
+<a href="https://www.google.com/search?q=html&oq=%EC%98%A8%EB%82%9C%ED%99%94&aqs=chrome..69i57j0l7.4570j0j8&sourceid=chrome&ie=UTF-8">
+    구글검색</a>
+<h1>form과 input요소</h1>
+<form action="html04.html" method="get" >
+	<h2>회원가입</h2>
+	<fieldset>
+		<legend>기본정보</legend>
+		<p>
+			<label for="hk">아이디:</label>
+			<input placeholder="영문세글자를 작성하세요 ex)abc" disabled="disabled" pattern="[a-z]{3}" autofocus="autofocus" autocomplete="off"   type="text" name="id" id="hk" required="required"/>
+		</p>
+		<p>
+			<label>비밀번호:</label>
+			<input type="password" name="pw" required="required"/>
+		</p>
+		<p>
+			<label>생년월일:</label>
+			<input disabled="disabled" type="datetime-local" name="date" />
+		</p>
+	</fieldset>
+	<fieldset>
+		<legend>메일수신여부</legend>
+		<p>
+			<label>수신여부:</label>
+			<input type="radio" name="receive" value="y" id="y" />
+			<label for="y">예</label>
+			<input type="radio" name="receive" value="n" id="n"/>
+			<label for='n'>아니오</label>
+<!-- 			<input type="radio" name="receive2" value="y"/>예 -->
+<!-- 			<input type="radio" name="receive2" value="n"/>아니오 -->
+			<br/>
+			<small>라디오버튼은 하나만 체그되고 다시 체크가 취소되지 않는다.
+			       데이터 전송시 체크된 태그의 값만 전송된다.</small>
+		</p>
+	</fieldset>
+	<hr style="border: 3px solid red;"/>
+	<fieldset>
+		<legend>관심분야</legend>
+		<p>
+			<input type="checkbox" checked="checked" name="chk1" value="html"/>
+			<label>HTML</label>
+			<input type="checkbox" name="chk2" value="css"/>
+			<label>CSS</label>
+			<input type="checkbox" name="chk3" value="javascript"/>
+			<label>JAVASCRIPT</label>
+			<br>
+			<small>여러개를 체크할 수 있고, 취소도 가능하다.
+			              데이터 전송시 체크된 태그만 전송된다.</small>
+		</p>
+	</fieldset>
+	<fieldset>
+		<legend>파일업로드</legend>
+		<p>
+			<label>파일업로드:</label>
+			<input type="file" name="f1" />
+		</p>
+	</fieldset>
+	<input type="submit" value="가입" />
+</form>
+<form action="html03.html" method="get">
+<table>
+	<tr>
+		<td>유형:
+			<select name="sel">
+				<option value="공지사항">공지사항</option>
+				<option value="일반게시판">일반게시판</option>
+				<option value="그룹방">그룹방</option>
+			</select>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<textarea readonly="readonly" rows="10" cols="60" name="content">test</textarea>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<input type="submit" value="글쓰기"/>
+		</td>
+	</tr>
+</table>
+	
+	
+</form>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+

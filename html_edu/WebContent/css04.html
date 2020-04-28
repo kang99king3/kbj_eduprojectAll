@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>목록태그로 메뉴만들기(display속성활용)</title>
+<style type="text/css">
+	a:hover{
+		text-decoration: underline;
+		background-color: red;
+	}
+
+	a {
+		text-decoration: none;
+		background-color:orange;
+		width: 100px;
+		height: 30px;
+		display: inline-block;
+		text-align: center;
+		line-height: 30px;
+		color:white;
+	}
+	
+	#menu > li {
+		list-style: none;
+		display: inline;
+	}
+	.sub_menu{
+		position:absolute;
+		
+		list-style: none;
+	}
+	
+	.sub_menu>li{
+	display: none;
+	}
+	.sub_menu:hover > li{
+		display: block;
+	}
+</style>
+</head>
+<body>
+<ul id="menu">
+	<li><a href="#">Company</a>
+		<ul class="sub_menu">
+			<li>회사명1</li>
+			<li>회사명1</li>
+			<li>회사명1</li>
+		</ul>
+	</li>
+	<li><a href="#">Product</a>
+	<ul class="sub_menu">
+			<li>회사명1</li>
+			<li>회사명1</li>
+			<li>회사명1</li>
+		</ul>
+	</li>
+	<li><a href="#">Service</a>
+	<ul class="sub_menu">
+			<li>회사명1</li>
+			<li>회사명1</li>
+			<li>회사명1</li>
+		</ul>
+	</li>
+	<li><a href="#">Community</a>
+	<ul class="sub_menu">
+			<li>회사명1</li>
+			<li>회사명1</li>
+			<li>회사명1</li>
+		</ul>
+	</li>
+</ul>
+</body>
+</html>
+
+

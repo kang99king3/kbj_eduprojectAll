@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="js/jquery-3.4.1.js"></script>
+<script type="text/javascript">
+	$(function(){
+		//1.eq()
+	   //[p,p,p,p][0]-->0번째 p를 가져옴
+		$("div p").eq(0).click(function(){
+		   //[b,b,b,b][0]--> 0번째b를 가져옴	
+			$("pre b").eq(0).css("color","blue").toggle();
+		});
+	   
+	   //2.slice()
+	   $("div p").eq(1).click(function(){
+		   $("pre b").slice(1, 3).toggle();
+	   });
+	   
+	   //3.first()
+	   $("div p").eq(2).click(function(){
+		   $("pre b").first().css("color","red").toggle();
+	   });
+	   
+	   //4.last()
+	   $("div p").eq(3).click(function(){
+		  $("pre b").last().toggle(); 
+	   });
+	});
+</script>
+<style type="text/css">
+	pre b{display: none;}
+</style>
+</head>
+<body>
+<pre>
+	<b>eq()메서드:선택한 엘리먼트들 중에 인덱스로 탐색한다.</b>
+	<b>slice()메서드:선택한 엘리먼트들 중에 인덱스 길이로 탐색할 수 있다.</b>
+	<b>first()메서드:선택한 엘리먼트들 중에 첫번째 요소를 탐색한다.</b>
+	<b>last()메서드:선택한 엘리먼트들 중에 마지막 요소를 탬색한다.</b>
+</pre>
+<div>
+	<p>1.eq()</p>
+	<p>2.slice()</p>
+	<p>3.first()</p>
+	<p>4.last()</p>
+</div>
+<span>aa</span><b>bbb</b>
+</body>
+</html>
+
+
+
+
+
+

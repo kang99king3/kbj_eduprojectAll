@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>배경설정</title>
+		<style type="text/css">
+			.bgbox{
+				width: 1000px;
+				height:10px;
+				border: 4px dotted yellow;
+				background-image: url("img/testimg2.JPG"), url("img/testimg2.JPG");
+				background-repeat: no-repeat,no-repeat ;
+ 				background-origin: border-box; 
+ 				padding: 100px;
+ 				background-position: 100px 200px, 0px 0px;
+ 				background-size: 300px 500px;
+/*  				background: -webkit-radial-gradient(left top,red,yellow,blue); */
+ 				background: -o-linear-gradient(left,red,yellow);
+ 				background: -mos-linear-gradient(left,red,yellow);
+ 				background: -ms-linear-gradient(left,red,yellow);
+ 				background: linear-gradient(left top,red,yellow);
+ 				background-position: 0px -300px; 
+			}
+			h1{
+				background-image: url("img/title.png");
+				background-repeat: no-repeat;
+				background-size: 40px;
+				padding-left: 45px;
+		
+			}
+		</style>
+	</head>
+	<body>
+		<h1>배경이미지설정하기</h1>
+		<p class="bgbox">aaa</p>
+	</body>
+</html>
+
+
+

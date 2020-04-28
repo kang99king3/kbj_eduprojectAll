@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>1.jq01_환경설정과작성방법</title>
+<script type="text/javascript" src="js/jquery-3.4.1.js"></script>
+<script type="text/javascript">
+	/*
+		설정하기: - 내부파일 링크:홈페이지에서 jquery.js파일을 다운 (안정적,cdn보다 속도빠름)
+				- URL링크(CDN): http://code.jquery.com/jquery-latest.js링크(항상최신버전/불안정)
+	*/
+	//javascript방식의 load
+// 	window.onload=function(){
+// 					alert("자바스크립트로딩");	
+// 				}
+	//jquery방식의 load
+// 	$(document).ready(function(){
+// 		alert("jQuery로딩");
+// 	});
+	//jquery방식의 load 다른방식
+	$(function(){
+// 		alert("jQuery로딩2");
+		//화면에 이미지를 클릭하면 대화창 실행하기
+// 		var img=document.getElementsByTagName("img");//[img]
+// 			img[0].onclick=function(){
+// 				alert("이미지를 클릭함");
+// 			}
+		//탐색한 대상이 배열형식이여도 잘 실행된다.
+		var img=$("img");
+			img.click(function() {
+				alert("이미지를 클릭했어요!!");
+			});		
+	});
+	
+	//이미지 축소하기
+	function imgSize(){
+	//배열: ["값","값","값","값","값","값","값"]
+	//json: {"key":"value","key":"value","key":"value"}
+// 		$("img").css("width", "100px").css("height", "100px");
+		$("img").css({"width":"100px","height":"100px"});
+	}
+	
+	//목록 중에 인덱스가 1인 항목을 강조하기
+	function highlight(){
+// 		$("li").eq(1).css("background-color","yellow");
+		$("li:eq(1)").css("background-color","yellow");
+	}
+	//이미지 추가하기
+	function addImg(){
+// 		var newImg=document.createElement("img");
+// 		newImg.src="img/yang.JPG";
+// 		newImg.alt="추가이미지"
+// 		document.getElementsByTagName("div")[0].appendChild(newImg);
+		
+		$("div").append("<img src='img/yang.JPG' alt='추가이미지'/>");
+	}
+	//이미지 숨기기
+	function hideImg(){
+// 		document.getElementsByTagName("img")[0].
+// 		style.display="none";
+		
+// 		$("img").hide();
+// 		$("img").css("display","none");
+		$("img").toggle(1000);
+	}
+	
+	//ajax메서드
+	function ajaxTest(){
+		$.ajax({
+			url:"server관련 페이지url",
+			method:"post",
+			data:"val=4",
+			dataType:"json",
+			success:function(obj){
+				var val=obj.key;
+				$("div").text(val);
+			}
+		});
+	}
+</script>
+<style type="text/css">
+	img{
+		width: 300px; height: 300px;
+	}
+</style>
+
+</head>
+<body>
+<h1>jQuery의 내용</h1>
+<ol>
+	<li>셀렉터표현식</li>
+	<li>DOM탐색메서드</li>
+	<li>DOM처리메서드</li>
+	<li>이벤트메서드</li>
+	<li>이펙트메서드</li>
+	<li>Ajax메서드</li>
+	<li>기타메서드</li>
+</ol>
+<button onclick="imgSize()">이미지 축소</button>
+<button onclick="highlight()">리스트 강조</button>
+<button onclick="addImg()">이미지 추가</button>
+<button onclick="hideImg()">이미지 숨기기</button>
+<hr/>
+<div>
+	<img src="img/yang.JPG" alt="연습이미지"/>
+</div>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+

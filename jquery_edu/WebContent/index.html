@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Slide Down Box Menu with jQuery and CSS3</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+		<meta name="referrer" content="no-referrer" />
+<!--         <meta name="description" content="Slide Down Box Menu with jQuery and CSS3" /> -->
+<!--         <meta name="keywords" content="jquery, css3, sliding, box, menu, cube, navigation, portfolio, thumbnails"/> -->
+<!-- 		<link rel="shortcut icon" href="../favicon.ico" type="image/x-icon"/> -->
+        <link rel="stylesheet" href="css/style.css" type="text/css" media="screen"/>
+        <style>
+ 			body{ 
+ 				background:#333 url(images/bg.jpg) repeat top left; 
+ 				font-family:Arial; 
+ 			} 
+ 			span.reference{ 
+ 				position:fixed; 
+ 				left:10px; 
+ 				bottom:10px; 
+				font-size:12px; 
+ 			} 
+ 			span.reference a{ 
+ 				color:#aaa; 
+ 				text-transform:uppercase; 
+ 				text-decoration:none; 
+ 				text-shadow:1px 1px 1px #000; 
+				margin-right:30px; 
+ 			} 
+ 			span.reference a:hover{ 
+ 				color:#ddd; 
+ 			} 
+			ul.sdt_menu{ 
+ 				margin-top:150px; 
+ 			} 
+ 			h1.title{ 
+ 				text-indent:-9000px;  
+ 				background:transparent url(images/title.png) no-repeat top left; 
+ 				width:633px; 
+ 				height:69px; 
+ 			} 
+ 			
+		</style>
+    </head>
+
+    <body>
+		<div class="content">
+			<h1 class="title">Slide Down Box Menu with jQuery and CSS3</h1>
+			<ul id="sdt_menu" class="sdt_menu">
+				<li>
+					<a href="#">
+						<img src="images/2.jpg" alt=""/>
+						<span class="sdt_active"></span>
+						<span class="sdt_wrap">
+							<span class="sdt_link">About me</span>
+							<span class="sdt_descr">Get to know me</span>
+						</span>
+					</a>
+				</li>
+				<li>
+					<a href="#">
+						<img src="images/1.jpg" alt=""/>
+						<span class="sdt_active"></span>
+						<span class="sdt_wrap">
+							<span class="sdt_link">Portfolio</span>
+							<span class="sdt_descr">My work</span>
+						</span>
+					</a>
+					<div class="sdt_box">
+							<a href="#">Websites</a>
+							<a href="#">Illustrations</a>
+							<a href="#">Photography</a>
+					</div>
+				</li>
+				<li>
+					<a href="#">
+						<img src="images/3.jpg" alt=""/>
+						<span class="sdt_active"></span>
+						<span class="sdt_wrap">
+							<span class="sdt_link">Inspiration</span>
+							<span class="sdt_descr">Where ideas get born</span>
+						</span>
+					</a>
+				</li>
+				<li>
+					<a href="#">
+						<img src="images/4.jpg" alt=""/>
+						<span class="sdt_active"></span>
+						<span class="sdt_wrap">
+							<span class="sdt_link">Photos</span>
+							<span class="sdt_descr">I like to photograph</span>
+						</span>
+					</a>
+				</li>
+				<li>
+					<a href="#">
+						<img src="images/5.jpg" alt=""/>
+						<span class="sdt_active"></span>
+						<span class="sdt_wrap">
+							<span class="sdt_link">Blog</span>
+							<span class="sdt_descr">I write about design</span>
+						</span>
+					</a>
+				</li>
+				<li>
+					<a href="#">
+						<img src="images/6.jpg" alt=""/>
+						<span class="sdt_active"></span>
+						<span class="sdt_wrap">
+							<span class="sdt_link">Projects</span>
+							<span class="sdt_descr">I like to code</span>
+						</span>
+					</a>
+					<div class="sdt_box">
+						<a href="#">Job Board Website</a>
+						<a href="#">Shopping Cart</a>
+						<a href="#">Interactive Maps</a>
+					</div>
+				</li>
+			</ul>
+		</div>
+        <div>
+            <span class="reference">
+				More script and css style
+				: <a href="http://www.htmldrive.net/" title="HTML DRIVE - Free DHMTL Scripts,Jquery plugins,Javascript,CSS,CSS3,Html5 Library">www.htmldrive.net </a>				
+            </span>
+		</div>
+
+        <!-- The JavaScript -->
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+		<script type="text/javascript" src="js/jquery.easing.1.3.js"></script>
+        <script type="text/javascript" src="js/menu.js"  ></script>
+    </body>
+</html>

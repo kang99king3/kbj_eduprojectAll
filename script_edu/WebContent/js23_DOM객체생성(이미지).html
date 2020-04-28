@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>23.DOM객체생성(이미지)</title>
+<script type="text/javascript">
+	function createImg(){
+		var radio=document.getElementsByName("rdobtn");//[radio,radio,radio]
+		var radioVal="";
+		for (var i = 0; i < radio.length; i++) {
+			if(radio[i].checked){
+				radioVal=radio[i].value;
+				break;
+			}
+		}
+// 		alert(radioVal);
+		//innerHTML사용
+// 		var div=document.getElementById("imgview");
+// 		div.innerHTML="<img alt='이미지생성' src='"+radioVal+"' />";
+
+		//create메서드 사용, 속성추가 메서드사용
+		var img=document.createElement("img");//<img /> 객체생성
+		img.setAttribute("src", radioVal);//<img src="img/i.png"/>
+		var div=document.getElementById("imgview");
+		
+		//이미지를 또 추가할때 기존 이미지를 지우고 추가하자!!
+		//removeChild():태그를 삭제하는 기능
+		//div.removeChild(삭제할 자식요소)--> div태그안에 자식요소들중에 선택한 요소를 삭제
+		
+// 		div.children.length==0 자식요소가 없다  1이나 !=0 이면 자식요소가 있다
+		if(div.children.length!=0){
+			div.removeChild(div.children[0]);						
+		}
+		
+		div.appendChild(img);
+	}
+</script>
+</head>
+<body>
+<input type="radio" name="rdobtn" value="img/0.png"/>바위<br>
+<input type="radio" name="rdobtn" value="img/1.png"/>가위<br>
+<input type="radio" name="rdobtn" value="img/2.png"/>보<br>
+<button onclick="createImg()">이미지생성</button>
+<div id="imgview">
+	
+</div>
+</body>
+</html>
+
+
+
+
+
+

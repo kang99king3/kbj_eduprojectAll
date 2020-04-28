@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>12.Window객체</title>
+<script type="text/javascript">
+	window.onload=function(){
+		document.getElementById("btn").onclick=function(event){
+// 			alert(event.target.nodeName);
+			window.open("js12_pop.html","팝업창만들기"
+					  ,"width=400px,height=500px,top=100px,left=300px");
+		}
+	}
+	
+</script>
+</head>
+<body>
+<h1>팝업창띄우기</h1>
+<input type="text" name="val01"/>
+<button id="btn">팝업</button>
+</body>
+</html>
+
+
+

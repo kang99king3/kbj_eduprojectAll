@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>position속성사용하기</title>
+<style type="text/css">
+	#red,#green,#blue{
+		width: 200px;
+		height: 200px;
+	}
+	
+	#red{
+		background: red;
+		width: 50%;
+		position: absolute;
+		z-index:0;
+		transition: font-size 2s;
+	}
+	#green{
+		background: green;
+		position: absolute;
+		left:50px;
+		top:-100px;
+		z-index:0;
+		transition: font-size 2s;
+	}
+	#blue{
+		background: blue;
+		position: absolute;
+		top:50px;
+		left:150px;
+		z-index:0;
+		transition: font-size 2s;
+	}
+	
+	#red:hover {
+		z-index: 100;
+		font-size: 50px;
+	}
+	#green:hover {
+		z-index: 100;
+		font-size: 50px;
+	}
+	#blue:hover {
+		z-index: 100;
+		font-size: 50px;
+	}
+</style>
+</head>
+<body>
+<div style="top:300px; border:1px solid blue; width: 500px; position: relative; ">
+<div id="red">red</div>
+<div id="green">green</div>
+<div id="blue">blue</div>
+</div>
+</body>
+</html>
+
+

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>CSS작성방식과우선순위</title>
+<link rel="stylesheet" href="style.css">
+<style type="text/css">
+
+/* 	p{color:blue;} */
+	#c{color:green; background-color: pink;}
+	li{color:red;}
+	#a{color:white; background-color: navy;}
+	.b{color:blue; background-color: yellow;}
+	*{font-family: 굴림;}
+</style>
+</head>
+<body>
+	<p>우선순위는 인라인 &nbsp;방식이 가장 높고, ID &gt; class &gt; 태그이름</p>
+	<p style="color:green; background-color: yellow;">우리를 기쁘게 하는 것들</p>
+	<hr/>
+	<h1>기본선택자들</h1>
+	<ul>
+		<li>type선택자</li>
+		<li id="a" style="font-family: 고딕;  font-size: 20px;">ID선택자</li>
+		<li class="b" id="c">Class선택자</li>
+		<li class="b">전체선택자</li>
+	</ul>
+</body>
+</html>
+
+
+
+
+

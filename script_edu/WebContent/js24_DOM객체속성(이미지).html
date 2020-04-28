@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>24.DOM객체 속성(img의 속성에 접근하여 이미지 바꾸기)</title>
+<style type="text/css">
+	img{display:inline-block; width: 300px; height: 300px; vertical-align: middle;}
+	a{text-decoration: none; font-size: 20pt;}
+	#container{width: 300px; overflow: hidden;}
+	#box{width: 900px; position: relative; transition: transform 2s;}
+	
+/* 	#box:hover{transform:translate(-600px,0px);} */
+</style>
+<script type="text/javascript">
+	/*  속성에 관련된 메서드
+		1.setAttribute("name","value"): 속성을 엘리먼트에 추가
+		2.setAttributeNode(Attr name): 속성을 엘리먼트에 추가
+		3.getAttribute("name"):속성값을 구함
+		4.hasAttribute("name"):속성 존재 여부(반환:true/false, if문에서 많이 사용)
+	*/
+	
+	window.onload=function(){
+			var anchs=document.getElementsByTagName("a");//[a,a]
+			var count=0;//img태그의 넣어줄 속성변수 ---> "img/"+count+".png";
+			var img=document.getElementsByTagName("img")[0];//[img]--> img
+// 			alert("alt속성이 있는지 여부:"+img.hasAttribute("alt"));
+			//anchs 배열의 0번째는 왼쪽화살표(a)임
+			anchs[0].onclick=function(){
+				var altAttr=img.getAttribute("alt");
+				if(altAttr=="img0"){
+					alert("첫번째사진입니다.");
+				}else{
+					img.setAttribute("alt", "img"+(--count));
+					img.setAttribute("src", "img/"+count+".png");					
+				}
+			}
+			
+			//anchs 배열의 1번째는 오른쪽화살표(a)임
+			anchs[1].onclick=function(){
+				var altAttr=img.getAttribute("alt");
+				if(altAttr=="img2"){
+					alert("마지막이미지입니다.");
+				}else{
+					img.setAttribute("alt", "img"+(++count));
+					img.setAttribute("src", "img/"+count+".png");					
+				}
+			}
+
+
+
+// 			var box=document.getElementById("box");
+// 			var count=0;
+// 			anchs[0].onclick=function(){
+// 				count-=300;
+// 				box.style.transform="translate("+count+"px,0px)";
+// 			}
+// 			anchs[1].onclick=function(){
+// 				count+=300;
+// 				box.style.transform="translate(-"+count+"px,0px)";
+// 			}
+		}
+</script>
+</head>
+<body>
+<div>
+	<a href="#" id="lt">◀</a>
+		<img alt="img0" src="img/0.png">
+	<a href="#" id="rt">▶</a>
+</div>
+<!-- <div style="text-align: center; width: 300px;"> -->
+	
+<!-- 	<div id="container"> -->
+<!-- 		<div id="box"><img alt="img0" src="img/0.png"><img alt="img0" src="img/1.png"><img alt="img0" src="img/2.png"> -->
+<!-- 		</div> -->
+<!-- 	</div> -->
+<!-- 	<a href="#" id="lt">◀</a> | <a href="#" id="rt">▶</a> -->
+<!-- </div> -->
+
+</body>
+</html>
+
+
+
+

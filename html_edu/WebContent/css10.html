@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>position을 활용한 레이아웃</title>
+<style type="text/css">
+div {
+	border: 1px solid gray;
+}
+
+#body01 {
+	width: 20%;
+	height: 400px;
+	background: yellow;
+	position: absolute;
+}
+
+#body02 {
+	width: 80%;
+	height: 500px;
+	background: orange;
+	position: relative;
+	left: 20%;
+}
+
+#container {
+	position: relative;
+	width: 100%;
+}
+
+#main {
+	width: 100%;
+}
+#header {
+	position: relative;
+}
+
+ul {
+	z-index: 99;
+	position: absolute;
+	right: 100px;
+	color: white;
+	font-weight: bold;
+/* 	display: none;   */
+}
+
+li {
+	list-style: none;
+	float:left;
+	background: blue;
+	margin: 2px;
+	width: 100px;
+}
+
+@media screen and (max-width:600px) {
+	#body01 {
+ 		width: 100%; 
+		background: yellow;
+		position: static;
+	}
+	#body02 {
+ 		width: 100%; 
+		background: orange;
+		position: static;
+	}
+	ul{
+		display: block;
+	}
+	li {
+		float:none;
+		font-size: 40px;
+		width: 200px;
+	}
+}
+
+@media screen and (min-width:600px) and (max-width:1000px) {
+	li {
+		float:none;
+		font-size: 60px;
+		color:yellow;
+		width: 205px;
+	}
+}
+</style>
+</head>
+<body>
+<div id="main">
+	<div id="header">
+		<h1>header영역</h1>
+		<ul>
+			<li>메뉴1</li>
+			<li>메뉴2</li>
+			<li>메뉴3</li>
+			<li>메뉴4</li>
+		</ul>
+	</div>
+	<div id="container">
+		<div id="body01"></div>
+		<div id="body02"></div>
+	</div>
+	<div id="footer">
+		<address>footer영역</address>
+	</div>
+</div>
+</body>
+</html>
+
+
+

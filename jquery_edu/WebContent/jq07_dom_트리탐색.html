@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="js/jquery-3.4.1.js"></script>
+<script type="text/javascript">
+	//페이지가 로딩되면 기능을 실행시켜준다.
+	$(function(){
+		$("div").find("b").css({"font-size":"20px","color":"red"});
+		// div-->[p,p,p,p,p]
+		$("div").children("p").eq(1).text("2.children()메서드");
+// 		$("div").children("#chd").text("2.children()메서드");
+// 		$("#chd").text("2.children()메서드");
+		//p--->div
+		$("p").parent().css("background-color", "yellow");
+		//b태그의 부모가 p태그인 요소를 선택
+// 		$("b").parent("p").css("background-color","pink");
+		$("b").parents("div").css("background-color","pink");
+		
+		$("div > p").eq(3).css("color","yellow")
+		                  .prev().css("border","1px solid red")
+		                  .end().css("font-size","25px")
+		                  .next().css("border","1px solid blue");
+		
+		$("#chd").siblings("p").css("background-color","orange");
+	});
+</script>
+</head>
+<body>
+<pre>
+	<b>find(selector):선택한 엘리먼트의 자손들 중에 탐색하고자하는 엘리먼트를 찾는다</b>
+	<b>children(selector):선택한 엘리먼트의 자식요소들을 찾는다.</b>
+	<b>parent(selector)/parents(selector):선택한 엘리먼트의 부모요소를 찾는다.</b>
+	<b>prev(selector)/next(selector):선택한 엘리먼트의 앞/뒤에 오는 요소를 찾는다.</b>
+	<b>siblings(selector):선택된 엘리먼트와 같은 레벨에 있는 요소를 찾는다.</b>
+</pre>
+<div>
+	<h1>제목</h1>
+	<p><b>1</b></p>
+	<p id="chd">2</p>
+	<p>3</p>
+	<p>4</p>
+	<p>5</p>
+</div>
+</body>
+</html>
+
+
+
+
+
+
+
+

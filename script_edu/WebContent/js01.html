@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>1.javascript의 작성방식</title>
+	<script type="text/javascript" src="js/link.js" defer="defer"  ></script>
+	<style type="text/css">
+		li{
+			font-size: 30pt;
+		}
+	</style>
+	<script type="text/javascript">
+		function embedded() {
+			var txt="내부작성방식";
+			alert(txt);
+		}
+	</script>
+</head>
+<body>
+<h1>스크립트 작성 방식 3가지</h1>
+<ol>
+	<li onclick="var txt='inline방식!!'; alert(txt); ">inline방식:태그 내부에 작성하며, 
+	주로 간단한 스크립트를 작성할 때 사용한다.(권장안함)</li>
+	<li onmouseover="embedded();">내부작성방식:&lt;script&gt;태그 내부에 작성하는 방식으로
+	    head태그나 body태그에 작성한다.</li>
+	<li >
+		<input onclick="linked();" type="text" value="외부작성방식:외부에 js파일을 작성하고, 링크를 통해 사용한다."/>
+	</li>
+</ol>
+</body>
+</html>
+
+
+
+
+
+

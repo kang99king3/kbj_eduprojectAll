@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>15.가위바위보게임(window객체)</title>
+<style type="text/css">
+	table{
+		position: relative;
+		z-index: 10;
+	}
+	table:after {
+		position:absolute;
+		content:"ad";
+		background: url("img/testimg2.JPG");
+		width: 400px;
+		height: 300px;
+		opacity: 0.2;
+		top:0;left:0;
+		z-index: -10;
+	}
+</style>
+<script type="text/javascript">
+	var play=null;//setInterval 객체를 저장할 전역변수
+	var show=null;//img태그객체를 저장할 전역변수
+	
+	
+	//이미지를 반복해서 보여주기(이미지는 계속 바뀜)
+	function rockGo(){
+		//img태그 객체를 구한다.---> src속성의 이미지 주소를 수정할 수 있음
+		show=document.getElementsByTagName("img");
+		play=setInterval(function(){
+			for (var i = 0; i < show.length; i++) {
+				var num=~~(Math.random()*3);//0~2사이의 숫자를 랜덤 반환
+				show[i].src="img/"+num+".png";
+				show[i].alt=num;
+			}			
+		} ,10);
+		
+		document.getElementsByClassName("btn")[0].disabled="disabled";
+		document.getElementsByClassName("btn")[1].disabled="";
+// 		document.getElementsByClassName("btn")[1].style.fontWeight="bold";
+// 		document.getElementsByClassName("btn")[1].style.color="red";
+	}
+	
+	function rockResult(){
+		document.getElementsByClassName("btn")[0].disabled="";
+		document.getElementsByClassName("btn")[1].disabled="disabled";
+		window.clearInterval(play);//setInterval객체를 멈추게 한다.
+	
+		//승패 판정!! 누가 이겼는지..
+		//0==바위, 1==가위, 2==보
+		//img[0] : player1 , img[1]: player2
+		//결과 경우의 수는  승,패,비김 : p1이 승리!!, 비겼습니다.
+		//비기는 경우...
+		//player1이 바위일 경우....
+		//player1이 가위일 경우....
+		//player1이 보일 경우....
+// 		alert(show[0].alt+":"+show[1].alt);
+		var result=document.getElementById("result");//결과를 출력할 엘리먼트
+		if(show[0].alt==show[1].alt){
+			result.innerHTML="비겼습니다.";
+		}else if(show[0].alt==0){//player1이 바위일경우
+			if(show[1].alt==1){
+				result.innerHTML="p1승리!!";
+			}else{
+				result.innerHTML="p2승리!!";
+			}
+		}else if(show[0].alt==1){//player1이 가위일경우
+			if(show[1].alt==0){
+				result.innerHTML="p2승리!!";
+			}else{
+				result.innerHTML="p1승리!!";
+			}
+		}else{ //player1이 보 일경우
+			if(show[1].alt==0){
+				result.innerHTML="p1승리!!";
+			}else{
+				result.innerHTML="p2승리!!";
+			}
+		}
+	}
+</script>
+</head>
+<body>
+<table>
+	<col width="200px"><col width="200px">
+	<tr align="center">
+		<td><input type="text" value="player1" id="p1"/></td>
+		<td><input type="text" value="player2" id="p2"/></td>
+	</tr>
+	<tr height="200px" align="center">
+		<td><img alt="가위바위보이미지" src="img/start.png"></td>
+		<td><img alt="가위바위보이미지" src="img/start.png"></td>
+	</tr>
+	<tr>
+		<td colspan="2" align="center">
+			<button class="btn" onclick="rockGo()">가위바위보!</button>
+			<button class="btn" disabled="disabled" onclick="rockResult()">결과확인</button>
+		</td>
+	</tr>
+	<tr>
+		<td colspan="2" id="result" align="center"></td>
+	</tr>
+</table>
+</body>
+</html>
+
+

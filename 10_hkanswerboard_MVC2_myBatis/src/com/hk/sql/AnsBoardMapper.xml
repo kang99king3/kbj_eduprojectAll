@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="com.hk.ansboard">
+<!-- 	resultMap: property(dto의 맴버필드), column(DB컬럼명) -->
+	<resultMap type="com.hk.dtos.AnsDto" id="AnsDtoMap">
+		<result property="seq" column="SEQ" />
+		<result property="id" column="ID" />
+		<result property="title" column="TITLE" />
+		<result property="content" column="CONTENT" />
+		<result property="regdate" column="REGDATE" />
+		<result property="refer" column="REFER" />
+		<result property="step" column="STEP" />
+		<result property="depth" column="DEPTH" />
+		<result property="readcount" column="READCOUNT" />
+		<result property="delflag" column="DELFLAG" />
+<!-- 		<collection property="loginDto" resultMap="loginDtoMap" /> -->
+	</resultMap>
+
+<!-- 	<resultMap type="com.hk.dtos.LoginDto" id="loginDtoMap"> -->
+<!-- 		<result property="seq" column="SEQ" /> -->
+<!-- 		<result property="id" column="ID" /> -->
+<!-- 		<result property="title" column="TITLE" /> -->
+<!-- 		<result property="content" column="CONTENT" /> -->
+<!-- 		<result property="regdate" column="REGDATE" /> -->
+<!-- 		<result property="refer" column="REFER" /> -->
+<!-- 		<result property="step" column="STEP" /> -->
+<!-- 		<result property="depth" column="DEPTH" /> -->
+<!-- 		<result property="readcount" column="READCOUNT" /> -->
+<!-- 		<result property="delflag" column="DELFLAG" /> -->
+<!-- 	</resultMap> -->
+	
+	<select id="getAllList" resultMap="AnsDtoMap"
+	 parameterType="Map">
+		 SELECT SEQ,ID,TITLE,CONTENT,REGDATE,REFER,STEP,DEPTH, 
+			    READCOUNT,DELFLAG 
+			    FROM ANSWERBOARD  
+			    <where>
+				    <if test="seq!=null">
+				    	 SEQ=#{seq}
+				    </if>
+			    </where>
+			    ORDER BY REFER,STEP 
+	</select>
+	
+<!-- 	<select id="getBoard" resultMap="AnsDtoMap" -->
+<!-- 	 parameterType="int"> -->
+<!-- 		SEQ,ID,TITLE,CONTENT,REGDATE,REFER,STEP,DEPTH,  -->
+<!-- 			    READCOUNT,DELFLAG   -->
+<!-- 		FROM ANSWERBOARD -->
+<!-- 		WHERE SEQ=#{seq}  -->
+<!-- 	</select> -->
+
+	<insert id="insertBoard" parameterType="AnsDto">
+		INSERT INTO ANSWERBOARD  
+		VALUES (ANSWERBOARD_SEQ.NEXTVAL
+				,#{id},#{title},#{content},SYSDATE  
+		 		,(SELECT NVL(MAX(REFER)+1,0) FROM ANSWERBOARD)  
+				,0,0,0,'N') 
+	</insert>
+	
+	<update id="ansUpdateBoard" parameterType="AnsDto">
+		UPDATE ANSWERBOARD SET TITLE=#{title},CONTENT=#{content}
+		, REGDATE=SYSDATE WHERE SEQ=#{seq} 
+	</update>
+	
+	<update id="muldel" parameterType="map">
+		UPDATE ANSWERBOARD SET DELFLAG='Y'
+		WHERE SEQ IN
+		<foreach collection="seqs" open="(" close=")"
+		          separator="," item="seq" >
+			#{seq}
+		</foreach>
+	</update>
+	<update id="readCount" parameterType="int">
+		 UPDATE ANSWERBOARD SET READCOUNT=READCOUNT+1  
+				  WHERE SEQ=#{seq} 
+	</update>
+	
+	<update id="replyUpdate" parameterType="AnsDto">
+		 UPDATE ANSWERBOARD SET STEP=STEP+1  
+		 WHERE REFER=(SELECT REFER FROM ANSWERBOARD WHERE SEQ=#{seq}) 
+		 AND STEP > (SELECT STEP FROM ANSWERBOARD WHERE SEQ=#{seq}) 
+	</update>
+	
+	<insert id="replyInsert" parameterType="AnsDto">
+		 INSERT INTO ANSWERBOARD  
+		 VALUES (ANSWERBOARD_SEQ.nextval,#{id},#{title},#{content},SYSDATE  
+				,(SELECT REFER FROM ANSWERBOARD WHERE SEQ=#{seq})   
+				,(SELECT STEP FROM ANSWERBOARD WHERE SEQ=#{seq})+1  
+				,(SELECT DEPTH FROM ANSWERBOARD WHERE SEQ=#{seq})+1  
+				,0,'N')
+	</insert>	
+	
+</mapper>
+
+                   
+
+
+
+
+
+
+
+
+
+
+
+

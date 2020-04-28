@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="js/jquery-3.4.1.js"></script>
+<style type="text/css">
+	div{border: 1px solid red; margin: 4px;}
+	
+</style>
+<script type="text/javascript">
+	/*
+		타겟이 앞에 작성
+		before() : 타겟의 앞에 추가한다.
+		after()  : 타겟의 뒤에 추가한다.
+		
+		타켓이 뒤에 작성
+		insertBefore()
+		insertAfter()
+	*/
+	var count=0;
+	$(function(){
+		$("button:eq(0)").click(function(){
+// 			$("#base").after("<div>새로운 엘리먼트를 추가"+(count++)+"</div>");
+			$("<div>새로운 엘리먼트를 추가"+(count++)+"</div>").insertAfter("#base");
+		});
+		
+		$("button:eq(1)").click(function(){
+// 			$("#base").before("<div>앞에, 요소를 추가한다.</div>");
+			$("<div>앞에, 요소를 추가한다.</div>").insertBefore("#base");
+		});
+		
+		$("button:eq(2)").click(function(){
+			var p=$("#base").children("p:first");
+			$("#base").after(p);
+		});
+	});
+	
+</script>
+</head>
+<body>
+<button>after하기</button>
+<button>before하기</button>
+<button>DOM이동하기</button>
+<div id="base">
+	<p>외부추가하기1</p>
+	<p>외부추가하기2</p>	
+</div>
+
+</body>
+</html>
+
+
+
+
+
+

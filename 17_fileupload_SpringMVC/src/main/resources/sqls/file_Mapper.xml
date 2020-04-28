@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="com.hk.fileupload">
+
+	<insert id="fileinsert" parameterType="FileDto">
+		INSERT INTO FILEBOARD VALUES 
+		(FILEBOARD_SEQ.NEXTVAL,#{origin_fname},#{stored_fname},#{file_size},SYSDATE,'N') 
+	</insert>
+			
+	<select id="filelist" resultType="FileDto">
+		SELECT SEQ, ORIGIN_FNAME, STORED_FNAME, FILE_SIZE,
+		F_REGDATE, F_DELFLAG 
+		FROM FILEBOARD ORDER BY F_REGDATE DESC 
+	</select>	
+	
+	<select id="getfile" parameterType="int" resultType="FileDto" >
+		SELECT SEQ, ORIGIN_FNAME, STORED_FNAME, FILE_SIZE,
+		F_REGDATE, F_DELFLAG 
+		FROM FILEBOARD WHERE SEQ=#{seq}
+	</select>	
+
+</mapper>
+
+                   
+
+
+
+
+
+
+
+
+
+
+
+

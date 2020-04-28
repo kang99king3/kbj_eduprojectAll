@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="js/jquery-3.4.1.js"></script>
+<style type="text/css">
+	div{
+		width: 400px;
+		height: 200px;
+		border: 1px solid red;
+		padding:20px;
+	}
+	
+	div p:first-child {
+		border: 1px solid green;
+		width: 150px;
+		height: 150px;
+		text-align: center;
+		line-height: 150px;
+	}
+</style>
+<script type="text/javascript">
+	/*
+		-이벤트 전파: 각 요소가 서로 포함관계이거나 중첩된 요소들 중에 하나가 이벤트 발생하면 중첩된 요소로 
+		           이벤트가 전파됨
+		-이벤트 전파 막기: stopPropagation() - 이벤트 전파를 막는 메서드
+		               preventDefault() - 이벤트에 대한 태그의 기본 동작을 막는 메서드
+		               return false - 둘의 기능을 다 가지고 있음
+	*/
+	$(function(){
+		$("a").eq(0).click(function(e){
+			alert("a태그click! "+e.type);
+// 			e.stopPropagation();//a태그 다음에 전파되는 이벤트 막음
+// 			e.preventDefault();
+			return false;
+		});
+		
+		$("div p").click(function(){
+			alert("p태그 클릭!!");
+			return false;
+		});
+		
+		$("div").click(function(){
+			alert("div 태그 클릭!!");
+			return false;
+		});
+		//trigger():강제로 자바스크립트에서 클릭 이벤트를 발생시킨다.
+// 		$("div").trigger("click");
+		
+		/*
+			이벤트 메서드 종류: click(), change(), keydown()......많은 종류가 있음
+			이벤트핸들러의 종류: bind(), unbind(), delegate(), unDelegate()
+			                live(), die(), on(), off(), one()
+		*/
+		//a태그 1번째에 대해 bind 설정을 함
+		$("a").eq(1).bind("mouseover mouseout",function(e){
+			if(e.type=="mouseover"){
+				$(this).css("background","red");
+			}
+			if(e.type=="mouseout"){
+				$(this).css("background","blue");
+			}
+		});
+		//버튼을 클릭하면 bind 적용을 중지(unbind)
+		$("button").eq(0).click(function(){
+			alert("bind메서드 기능 중지");
+			$("a").eq(1).unbind();//bind()기능 해제(중지)
+		});
+			
+		//동적으로 추가되는 요소에 대한 이벤트 처리
+		$("button").eq(1).click(function(){
+			$("body").append("<p>새로추가되는 p태그</p>");
+		});
+		
+// 		$("body > p").click(function(){
+// 			$(this).css("color","red");
+// 		});
+		
+		// on("이벤트 이름","추가 셀렉터 표현식", fn())
+		$("body").on("click","p",function(){
+			$(this).css("background-color","red");
+		});
+	});
+</script>
+</head>
+<body>
+<h1>이벤트 전파 막기</h1>
+<div id="test01">
+	<p class="ptest01">
+		<a href="jq10_domsearch04.html">클릭!!</a>
+	</p>
+	<p class="ptest01">클릭!!</p>
+</div>
+<div id="test02">
+	<p class="ptest02">
+		<a href="jq10_domsearch04.html">클릭!!</a>
+	</p>
+	<p class="ptest02">클릭!!</p>
+</div>
+<hr>
+<h1>동적추가된 요소에 대한 이벤트처리</h1>
+<button>bind해제</button>
+<button>요소추가</button>
+<p>이미 작성되어 있는 p태그</p>
+
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+

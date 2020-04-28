@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>Starbuzz Coffee</title>
+<!-- 	<link rel="stylesheet" type="text/css" href="starbuzz.css" /> -->
+	<script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
+	<script type="text/javascript">
+// 		$(function(){
+// 			$("#main>h1").hover(function(){      
+// 				$(this).next("p").show(2000);
+// 			},function(){
+// 				$(this).next("p").hide(2000);                    
+// 			});
+			
+// 		});
+	</script>
+	<style type="text/css">      
+		#header,#footer{
+			background-color: #675c47;
+		}
+		#footer{
+			clear: both;
+			color:#efe5d0;
+			text-align: center;
+			padding: 15px 10px;  
+			width: 79%;   
+		}
+		body{   
+			background:url("images/background2.gif");
+			font-size: 14px;
+		}
+		#main{
+			background:url("images/background.gif");
+			width:79% ;  
+			float: left;
+			margin-bottom: 5px; 
+			margin-top: 10px;     
+			padding:10px;       
+		}
+		#sidebar{         
+			margin-top: 10px;      
+			background:url("images/background.gif") right bottom;  
+			width:18%;
+			float:right;  
+			margin-bottom: 5px; 
+			padding:10px;     
+		}
+		#allcontent{
+/* 			min-width: 1400px;      */
+			padding: 5px;
+		}     
+		#award{
+			position: absolute;     
+			left:300px;   
+			top:50px;
+			transition:transform 1s, width 1s;  
+		}
+		#award:hover{
+			width:300px;
+			transform:rotate(360deg);          
+		}
+		
+		#coupon{
+			position: fixed;    
+			top:350px;
+			left: -100px;   
+			opacity: 0.3;  
+		}
+		#coupon:hover{
+			left:0px;   
+			opacity: 1;        
+		}     
+		
+		@media screen and (max-width:1400px){
+			#main{
+				float: none;
+				width: 100%;
+				font-size: 18px;
+			}
+			#sidebar{
+				float: none;
+				width: 100%;
+				font-size: 18px;
+			}
+			#footer{
+				width: 100%;
+			}     
+		}
+		
+		@media screen and (max-width:600px){  
+			#main > h1{
+				font-size: 20px;  
+				margin-bottom: 10px;     
+				padding:5px;                      
+			}     
+			#main > p{     
+  				display: none;                           
+			}
+			                     
+ 			#main > h1:hover +p{                   
+    				display: block;     
+ 			}       
+		}
+	</style>    
+</head>  
+<body>
+	<div id="allcontent">
+		<div id="header">
+			<img src="images/header.gif" alt="Starbuzz Coffee header image" />
+		</div>
+		<div id="award">
+			<img src="images/award.gif"
+			alt="Roaster of the Year award" />
+		</div>
+		<div id="main">
+			<h1>QUALITY COFFEE, QUALITY CAFFEINE</h1>
+			<p>
+				At Starbuzz Coffee, we are dedicated to filling all your  caffeine needs through our
+				quality coffees and teas. Sure, we want you to have a great cup of coffee and a great
+				coffee experience as well, but we're the only company that actively monitors and
+				optimizes caffeine levels. So stop by and fill your cup, or order online with our new Bean
+				Machine online order form, and get that quality Starbuzz coffee that you know will meet
+				your caffeine standards.
+			</p>
+			<p>
+				And, did we mention <em>caffeine</em>? We've just started funding the guys doing all
+				the wonderful research at the Caffeine Buzz.
+				If you want the latest on coffee and other caffeine products,
+				stop by and pay them a visit.
+			</p>
+			<h1>OUR STORY</h1>
+			<p>
+				"A man, a plan, a coffee bean". Okay, that doesn't make a palindrome, but it resulted
+				in a damn good cup of coffee.  Starbuzz's CEO is that man, and you already know his
+				plan: a Starbuzz on every corner.
+			</p>
+			<p>
+				In only a few years he's executed that plan and today
+				you can enjoy Starbuzz just about anywhere.  And, of course, the big news this year
+				is that Starbuzz teamed up with Head First readers to create Starbuzz's Web presence,
+				which is growing rapidly and helping to meet the caffeine needs of a whole new set of
+				customers.
+			</p>
+			<h1>STARBUZZ COFFEE BEVERAGES</h1>
+			<p>
+				We've got a variety of caffeinated beverages to choose
+				from at Starbuzz, including our House Blend, Mocha Cafe Latte,
+				Cappuccino, and a favorite of our customers, Chai Tea.
+			</p>
+			<p>
+				We also offer a variety of coffee beans, whole or ground, for you to
+				take home with you.  Order your coffee today using our online
+				Bean Machine, and take
+				the Starbuzz Coffee experience home.
+			</p>
+		</div>
+		<div id="sidebar">
+			<p class="beanheading">
+				<img src="images/bag.gif" alt="Bean Machine bag" />
+				<br />
+				ORDER ONLINE
+				with the <a href="styledform.html">BEAN MACHINE</a>
+				<br />
+				<span class="slogan"> FAST
+					<br />
+					FRESH
+					<br />
+					TO YOUR DOOR
+					<br />
+				</span>
+			</p>
+			<p>
+				Why wait?  You can order all our fine coffees right from the Internet with our new,
+				automated Bean Machine.  How does it work?  Just click on the Bean Machine link,
+				enter your order, and behind the scenes, your coffee is roasted, ground
+				(if you want), packaged, and shipped to your door.
+			</p>
+		</div>
+		<div id="footer">
+			&copy; 2005, Starbuzz Coffee
+			<br />
+			All trademarks and registered trademarks appearing on
+			this site are the property of their respective owners.
+		</div>
+		<div id="coupon">
+			<a href="" title="Click here to get your free coffee"> <img src="images/ticket.gif" alt="Starbuzz coupon ticket" /> </a>
+		</div>
+	</div>
+</body>
+</html>

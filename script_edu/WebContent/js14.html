@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>14.알람시계만들기(setInterval/setTimeout)</title>
+<style type="text/css">
+	button{
+		border-radius: 10px;
+	}
+
+	#clock{
+/* 		border:1px solid red; */
+		background-image: url("https://img.danawa.com/prod_img/500000/646/945/img/6945646_1.jpg?shrink=500:500&_v=20190620114700");
+		background-size: 300px 300px;
+		height: 300px;
+		width: 300px;
+	}
+	
+	#btn{
+	 
+		position: relative;
+		top:60px;
+		left:125px;
+		width: 50px;
+		background-color: navy;
+		color:white;
+		text-align: center;
+		border-radius: 10px;
+		cursor: pointer;
+	}
+	
+	#btn:hover{
+		background-color: orange;
+	}
+	#btn:active{
+		color:red;
+	}
+	
+	#se{
+		position: relative;
+		top:100px;
+		text-align:center;
+		font-size: 20pt;
+		font-weight: bold;
+		color:orange;
+ 		text-shadow: 2px 2px 1px white;
+	}
+	
+	#setAlarm{
+		position: relative;
+		top:150px;
+		text-align: center;
+		display: none;
+	}
+	
+	#alarm{
+		width: 50px;
+	}
+	
+	/* 알람이 울리면 실행될 효과*/
+	.move{
+		-ms-animation: clockmove infinite 4s;
+	}
+	
+	@-ms-keyframes clockmove{
+		20%{-ms-transform:translate(40px,40px);}
+		40%{-ms-transform:translate(-40px,100px);}
+		60%{-ms-transform:translate(50px,150px);}
+		90%{-ms-transform:translate(200px,-100px);}
+	}
+</style>
+<script type="text/javascript">
+	window.onload=function(){
+		window.setInterval(timeView, 1000);
+		
+	}
+	//현재시간을 구해서 화면에 보여주기
+	function timeView(){
+		var date=new Date();
+		document.getElementById("se").innerHTML=date.toLocaleTimeString();
+	}
+	
+	//알람버튼을 클릭하면 알람설정 폼을 보여주기
+	function view(){
+// 		alert(document.getElementById("setAlarm").style.display);
+		var setAlarmForm=document.getElementById("setAlarm");
+		if(setAlarmForm.style.display==""||setAlarmForm.style.display=="none"){
+			document.getElementById("setAlarm").style.display="block";			
+		}else{
+			document.getElementById("setAlarm").style.display="none";
+		}
+	}
+	var audio=null;
+	//음악이 나오는 기능
+	function music(){
+		audio=new Audio("music/Kalimba.mp3");
+		audio.play();
+// 		var musicEle='<embed src="music/Kalimba.mp3" hidden="true">';
+// 		document.getElementById("music").innerHTML=musicEle;
+		document.getElementById("off").disabled="";
+		document.getElementById("clock").className="move";
+	}
+	//설정된 알람시간에 음악나오는 기능을 실행할 함수
+	function setAlarm(){
+		//입력한 시간을 가져오기
+		var inputAlarm=document.getElementById("alarm").value;
+		if(inputAlarm==""){
+			alert("시간을 반드시 입력하세요!!");
+		}else{
+			var aTime=inputAlarm*1000;// 1s--->1000ms
+			window.setTimeout(music, aTime);
+		}
+	}
+	//알람을 종료할 기능
+	function finishAlarm(){
+		audio.pause();
+		document.getElementById("music").innerHTML="";
+		document.getElementById("alarm").value="";
+		document.getElementById("setAlarm").style.display="none";
+		document.getElementById("clock").className="";
+	}
+</script>
+</head>
+<body>
+<div id="clock" >
+	<div id="btn" title="알람을 설정하세요!!" onclick="view()">알람</div>
+	<div id="se"></div>
+	<div id="setAlarm">
+		<input type="number" id="alarm"/><b>초 후</b>
+		<button id="on" onclick="setAlarm()">설정</button>
+		<button disabled="disabled" id="off" onclick="finishAlarm()" >끄기</button>
+	</div>
+</div>
+<div id="music">
+	<audio controls="controls" >
+		<source src="music/Kalimba.mp3">
+	</audio>
+</div>
+</body>
+</html>
+
+
+
+
+
+
+

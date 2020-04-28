@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="https://unpkg.com/react@16/umd/react.development.js"></script>
+<script type="text/javascript"  src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+<script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+</head>
+<body>
+<div id="root"></div>
+<div id="disp"></div>
+<div id="root2"></div>
+<div id="root3"></div>
+<div id="root4"></div>
+<div id="root5"></div>
+<script type="text/babel">
+	const testval="리액트";
+	const css1={"color":"red","font-size":"15px"};
+	function test(){
+		return (
+			<div style={css1}>{testval}: 안녕하세요</div>
+		)
+	}
+	const nameval=test();
+	const root3=document.getElementById("root3");
+	ReactDOM.render(nameval,root3);
+
+	ReactDOM.render(
+		<h1>hello, world!!</h1>,
+		document.getElementById("root")	
+	)
+
+	const root=document.querySelector("#disp");
+	const msg = getGreeting();
+
+	ReactDOM.render(msg,root);
+	function getGreeting(){
+		const r=Math.floor(Math.random()*3);
+		if(r===0){return <p>오늘</p>}
+		if(r===1){return <p>어제</p>}
+		if(r===2){return <p>내일</p>}
+	}
+	
+	const item="SD카드"
+	const value=12000
+	const msg2=<h1>{item} - {value}원</h1>
+	const elm=document.getElementById("root2")
+	ReactDOM.render(msg2,elm)
+
+	const root4=document.getElementById("root4")
+	function timeView(){
+		const date=new Date();
+		
+		const m=<div>{date.toLocaleTimeString()}</div> ;
+		
+		ReactDOM.render(m,root4);
+	}
+	function kkk(props){
+		const k=props.kbj;
+		const p=props.kang;
+		
+		return <div>{k}/{p}</div>
+	}
+
+	const dom=<div>
+				<kkk kbj="안녕" kang="유후" />
+			  </div>
+	ReactDOM.render(dom, document.getElementById('root5'));
+	setInterval(timeView, 1000);
+	
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
+

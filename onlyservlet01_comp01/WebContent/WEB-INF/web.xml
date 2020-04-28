@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xmlns="http://java.sun.com/xml/ns/javaee" 
+ xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" 
+ xsi:schemaLocation="http://java.sun.com/xml/ns/javaee 
+ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" 
+version="2.5">
+  <display-name>onlyservlet01_comp01</display-name>
+  <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+  </welcome-file-list>
+  <context-param>
+  <param-name>driver</param-name>
+  <param-value>oracle.jdbc.driver.OracleDriver</param-value>
+  </context-param>
+  <context-param>
+  <param-name>user</param-name>
+  <param-value>hr</param-value>
+  </context-param>
+  <context-param>
+  <param-name>passwd</param-name>
+  <param-value>manager</param-value>
+  </context-param>
+  <context-param>
+  <param-name>url</param-name>
+  <param-value>jdbc:oracle:thin:@127.0.0.1:1521:XE</param-value>
+  </context-param>
+  <servlet>
+    <servlet-name>custuserlist</servlet-name>
+    <servlet-class>com.jungbo.only.CustListServlet</servlet-class>
+    <init-param>
+      <param-name>listsql</param-name>
+      <param-value>SELECT ID,NAME FROM CUSTUSER ORDER BY ID DESC</param-value>
+    </init-param>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>custuserlist</servlet-name>
+    <url-pattern>/custuserlist</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>custadd</servlet-name>
+    <servlet-class>com.jungbo.only.CustAddServlet</servlet-class>
+    <init-param>
+      <param-name>insertsql</param-name>
+      <param-value>INSERT INTO CUSTUSER VALUES(?,?,?)</param-value>
+    </init-param>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>custadd</servlet-name>
+    <url-pattern>/custadd</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>getcustuser</servlet-name>
+    <servlet-class>com.jungbo.only.CustDetailServlet</servlet-class>
+    <init-param>
+      <param-name>selectsql</param-name>
+      <param-value>SELECT ID,NAME, ADDRESS FROM CUSTUSER WHERE ID=?</param-value>
+    </init-param>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>getcustuser</servlet-name>
+    <url-pattern>/getcustuser</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>updatecustuser</servlet-name>
+    <servlet-class>com.jungbo.only.CustUpdateServlet</servlet-class>
+    <init-param>
+      <param-name>updatesql</param-name>
+      <param-value>UPDATE CUSTUSER SET NAME=? , ADDRESS=? WHERE ID=?</param-value>
+    </init-param>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>updatecustuser</servlet-name>
+    <url-pattern>/updatecustuser</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>custbfupdate</servlet-name>
+    <servlet-class>com.jungbo.only.CustbfUpdateServlet</servlet-class>
+    <init-param>
+      <description></description>
+      <param-name>bfupdatesql</param-name>
+      <param-value>SELECT ID,NAME, ADDRESS FROM CUSTUSER WHERE ID=?</param-value>
+    </init-param>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>custbfupdate</servlet-name>
+    <url-pattern>/custbfupdate</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>muldelcustuser</servlet-name>
+    <servlet-class>com.jungbo.only.CustMulDelServlet</servlet-class>
+    <init-param>
+      <param-name>muldelsql</param-name>
+      <param-value>DELETE FROM CUSTUSER WHERE ID=?</param-value>
+    </init-param>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>muldelcustuser</servlet-name>
+    <url-pattern>/muldelcustuser</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>delcustuser</servlet-name>
+    <servlet-class>com.jungbo.only.CustDelServlet</servlet-class>
+    <init-param>
+      <param-name>delsql</param-name>
+      <param-value>DELETE FROM CUSTUSER WHERE ID=?</param-value>
+    </init-param>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>delcustuser</servlet-name>
+    <url-pattern>/delcustuser</url-pattern>
+  </servlet-mapping>
+</web-app>

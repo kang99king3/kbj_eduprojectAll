@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>4.selector_form유효값처리</title>
+<script type="text/javascript" src="js/jquery-3.4.1.js"></script>
+
+<style type="text/css">
+	.error{display: none; color:red;}
+</style>
+<script type="text/javascript">
+	$(function(){
+		//form에서 submit이벤트가 발생된다면 유효값을 확인하고, 유효하지않은 값이면 submit중단
+		$("#signal").submit(function(event){
+// 			var info=document.getElementsByClassName("infobox")[0];
+// 			$(info).val();
+			var infoValue=$(".infobox").val();
+			if(infoValue==null||infoValue==""||infoValue==undefined){
+				$(".error").css("display","inline");
+// 				event.preventDefault();//이벤트의 기본 기능을 막아주는 메서드
+				return false;// return false도 이벤트 기능을 막아주는 역할
+			}
+		});
+		
+		$("#confirm").click(function(){
+			//체크된 체크박스를 구한다.
+			$("#result").empty();//선택된 요소의 자식요소들을 모두 삭제
+			
+			if($("input[name=chk]:checked").length==0){
+				alert("최소 하나이상 체크하세요~~!!");
+			}else{
+				$("input[name=chk]:checked").each(function(){
+					var book=$(this).next().text();//"java"
+					var price=$(this).val();
+					$("#result").append("<p>"+book+":가격 "+price+"</p>");
+				});				
+			}
+		});
+		
+		$("input[name=chk]").click(function(){
+			//방법1;
+// 			var bool=true;
+// 			$("input[name=chk]").each(function(i){
+// 				if(!$("input[name=chk]").eq(i).prop("checked")){
+// 					bool=false;
+// 					return;
+// 				}
+// 			});
+// 			if(bool){
+// 				$("input[name=all]").prop("checked",true);
+// 			}else{
+// 				$("input[name=all]").prop("checked",false);
+// 			}
+			//방법2
+			var chks=$("input[name=chk]");
+			var checkedChks=$("input[name=chk]:checked");
+			if(chks.length==checkedChks.length){
+				$("input[name=all]").prop("checked",true);
+			}else{
+				$("input[name=all]").prop("checked",false);
+			}
+		});
+		
+	});
+	
+	function allchk(bool){
+// 		var chks=document.getElementsByName("chk");
+// 		for (var i = 0; i < chks.length; i++) {
+// 			chks[i].checked=bool;
+// 		}
+		//속성값 설정하기:attr("속성명","속성값"), prop("속성명","속성값")
+		//속성값 가져오기:attr("속성명"),prop("속성명")
+// 		$("input[name=chk]").prop("checked",bool);
+		alert($("input[name=chk]").eq(0).prop("checked"))
+	}
+</script>
+</head>
+<body>
+<form id="signal" method="get"  action="jq04_selector_form유효값처리.html">
+	<div>
+		<span>User Id</span>
+		<input type="text" class="infobox" name="userid"/>
+		<span class="error">반드시 입력하세요!!</span>
+		<input type="submit" class="submit" value="입력하기"/>
+	</div>
+</form>
+<hr/>
+<fieldset>
+	<legend>체크여부확인</legend>
+	<input type="checkbox" name="all" onclick="allchk(this.checked)"/>전체선택<br>
+	<input type="checkbox" name="chk" value="20000" checked="checked" /><b>java</b><br>
+	<input type="checkbox" name="chk" value="30000"/><b>jQuery</b><br>
+	<input type="checkbox" name="chk" value="40000"/><b>jsp</b><br>
+	<input type="button" value="확인" id="confirm"/><br>
+	<span>선택한 책 가격</span>
+	<div id="result"></div>
+</fieldset>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

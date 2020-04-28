@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>메뉴만들기</title>
+<script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
+<script type="text/javascript">
+	//상위 메뉴를 클릭하면 그 메뉴에 해당하는 하위메뉴를 보이게 하기(slide효과)
+	//단, 클릭한 하위메뉴만 보이게 처리
+	
+	$(function(){
+		$("b").click(function(){
+// 			$(this).next().slideDown();
+			//b----> li ----> ul---> 슬라이드 닫아주기기능실행
+// 			$(this).parent().siblings().children("ul").slideUp();
+			$(this).next().slideDown().end().parent().siblings().children("ul")
+			 										.slideUp();
+		});
+	});
+</script>
+<style type="text/css">
+	.main_menu > li{width: 300px;}
+	.sub_menu1{cursor: pointer;}
+	.sub_menu2{display: none; height: 180px;}
+	
+</style>
+</head>
+<body>
+<p>메뉴만들기</p>
+<ul type="square" class="main_menu">
+<li class="sub_menu1">
+    <b id="idtest">(1)CSS셀렉터</b>
+	<ul type="circle" class="sub_menu2" >
+		<li>tag로 선택하기</li>
+		<li>ID로 선택하기</li>
+		<li>class로 선택하기</li>
+		<li>parent  child 로 선택하기</li>
+		<li>parent &gt; child 로 선택하기</li>
+		<li>:nth-child(n/even/odd)로 선택하기</li>
+		<li>:first-child로 선택하기</li>
+		<li>:last-child로 선택하기</li>
+	</ul>
+</li>
+<li class="sub_menu1"><b>(2)속성셀렉터</b>
+	<ul type="circle" class="sub_menu2">
+		<li title="aa">[attr]</li>
+		<li value="aa">[attr=value]</li>
+		<li value="aa">[attr!=value]</li>
+	</ul>
+</li>
+<li class="sub_menu1"><b>(3)폼셀렉터</b>
+	<ul type="circle" class="sub_menu2">
+		<li>:input타입</li>
+	</ul>
+</li>
+<li class="sub_menu1"><b>(4)사용자정의셀렉터</b>
+	<ul type="circle" class="sub_menu2">
+		<li>:eq(n)</li>
+		<li>:first</li>
+		<li>:last</li>
+		<li>:even</li>
+		<li>:odd</li>
+		<li>:parent</li>
+	</ul>
+</li>
+</ul>
+</body>
+</html>

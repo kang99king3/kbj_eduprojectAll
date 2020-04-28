@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>25.DOM객체추가하기</title>
+<style type="text/css">
+	p{border: 1px solid red;}
+	#test01,#test02{
+		width: 300px; height: 300px;
+		border: 1px dashed blue;
+	}
+</style>
+<script type="text/javascript">
+	//문서에 요소를 추가하는 기능을 갖는 메서드,속성등
+	//1. innerHTML : 태그 내부에 요소들을 구하거나 추가한다.
+	//2. textContent : 태그 내부에 text요소를 구하거나 추가한다.
+	//3. document.write(): 문서에 요소들을 출력한다.
+	//4. appendChild(Node) ("<b></b>")(X): 타겟요소의 자식들중에 마지막 위치에 요소를 추가한다.
+	//  Node타입이란: document.getElementBy~~(), createElements("tag")
+	//              createAttribute(), createTextNode(), target.parentNode...
+	//5. insertBefore(newNode, oldNode): newNode를 oldNode앞에 추가한다.
+
+	function addAppend(){
+		var fieldset=document.getElementById("addEle");
+		var p=document.createElement("p");
+		var txt=document.createTextNode("자식태그들중에 마지막에 붙여 넣는다");
+		p.appendChild(txt);//<p>자식태그들중에 마지막에 붙여 넣는다</p>
+		
+		fieldset.appendChild(p);
+	}	
+	
+	function addBefore(){
+		var newP=document.createElement("p");
+		newP.textContent="엘리먼트의 앞에 붙여 넣는다";
+		var fieldset=document.getElementById("addEle");
+		var oldChild=document.querySelectorAll("#addEle > div")[0];//[div][0]
+		fieldset.insertBefore(newP, oldChild);//newP를 oldChild앞에 추가
+	}
+	
+	function moveEle(){
+		//문서에 이미 존재하는 요소를 탐색해서 appendChild로 실행하면 이동한다.
+		var moveP=document.getElementById("addEle").children[1];//[legend,div]
+		document.body.appendChild(moveP);
+	}
+	
+	function addTest(){
+		var test01=document.getElementById("test01");//반환타입:엘리먼트
+		var newDiv=document.createElement("div");
+// 		newDiv.innerHTML="<b>dom test</b>";//문자열에 태그를 표현한다면!!
+		newDiv.textContent="dom test";//문자열을 텍스트자체로 표현한다면!!
+// 		var txt=document.createTextNode("dom test");//텍스트를 객체로 생성해서 사용한다면
+// 		newDiv.appendChild(txt);
+		
+		test01.appendChild(newDiv);
+	}
+	
+	function moveTest(){
+		var test01=document.getElementById("test01");
+		var test02=document.getElementById("test02");
+		//방법1: innerHTML사용
+// 		test02.innerHTML+=test01.innerHTML;
+// 		test01.innerHTML="";
+		
+		//방법2: appendChild()사용
+// 		alert(test01.children.length);
+// 		if(test01.children.length==0){
+		if(test01.children[0]==undefined){
+			alert("이동시킬 요소가 없습니다.");
+		}else{
+			test02.appendChild(test01.children[0]);
+			//                아규먼트타입: Node타입			
+		}
+	}
+</script>
+</head>
+<body>
+<h1>태그추가하기</h1>
+<button onclick="addAppend()">appendChild()실행</button>
+<button onclick="addBefore()">insertBefore()실행</button>
+<button onclick="moveEle()">appendChild()이용한 요소이동</button>
+<fieldset id="addEle">
+	<legend>부모태그</legend>	
+	<div>div태그</div>
+</fieldset>
+<hr>
+<h3>문제1:test01태그에 "dom test"란 내용을 가진 div태그를 여러개 추가하기
+	<button onclick="addTest()">클릭!</button>
+</h3>
+<h3>문제2:test01태그에 추가된 태그들을 test02태그로 이동시키시오.
+	<button onclick="moveTest()">클릭!</button>
+</h3>
+<h4>*test01</h4>
+<div id="test01"></div>
+<h4>*test02</h4>
+<div id="test02"></div>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

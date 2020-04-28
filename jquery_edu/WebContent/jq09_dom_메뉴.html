@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="js/jquery-3.4.1.js"></script>
+<style type="text/css">
+	.menu{
+		width: 120px;
+		background-color: orange;
+		text-align: center;
+		position: absolute;
+	}
+	#menu02{left: 140px;}
+	#menu03{left: 270px;}
+	.menu > div{display: none;}
+	.menu > a{text-decoration: none; height: 30px; display: inline-block;
+			line-height: 30px; color:white;
+	}
+</style>
+<script type="text/javascript">
+	$(function(){
+		//클래스명이 menu인 요소에 마우스를 올리면 하위메뉴가 보이고 마우스가 나가면 하위메뉴 사라지고.
+// 		$(".menu").hover(function(){
+// 			$(this).children("div").css("display","block");
+		// 이펙트메서드의 slide를 사용
+		// stop()메서드: 전단계에 실행되어지는 효과를 멈추게 해준다.
+// 			$(this).children("div").stop().slideDown();
+// 		},function(){
+// 			$(this).children("div").css("display","none");
+// 			$(this).children("div").stop().slideUp();
+// 		});
+		
+		//toggle을 사용하면 hover의 기능을 한번만 실행하면 된다.
+		$(".menu").hover(function(){
+			$(this).children("div").stop().slideToggle(100);
+		});
+		
+		
+	});
+</script>
+</head>
+<body>
+<h1>DOM탐색메서드</h1>
+<div id="menu01" class="menu">
+	<a href="#">필터링메서드</a>
+	<div>.eq()</div>
+	<div>.slice()</div>
+	<div>.first()</div>
+	<div>.last()</div>
+</div>
+<div id="menu02" class="menu">
+	<a href="#">트리탐색메서드</a>
+	<div>.find()</div>
+	<div>.children()</div>
+	<div>.parent()</div>
+	<div>.parents()</div>
+	<div>.prev()</div>
+	<div>.next()</div>
+</div>
+<div id="menu03" class="menu">
+	<a href="#">기타메서드</a>
+	<div>.add()</div>
+	<div>.is()</div>
+</div>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

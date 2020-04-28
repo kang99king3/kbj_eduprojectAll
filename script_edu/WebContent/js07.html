@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>7.Number객체</title>
+<script type="text/javascript">
+	//onload=function(){}: 페이지가 실행되면 함수를 실행해라~
+	window.onload=function(){
+// 		numberObj();
+	}
+	function numberObj(){
+		//1.작성방법
+		var num=new Number(7);
+		var num=7;
+		
+		//2.Number객체의 속성
+		//NaN속성
+		//parseInt("7"): "7"--> 7 변환 기능
+		 document.write("NaN속성:"+parseInt("a")+"<br/>");
+		
+		//3.Infinity : 표현범위를 벗어난 값(엄청큰값,오류)
+		document.write("Infinity:"+(Number.MAX_VALUE+0.00001e+308)+"<br/>");
+	
+		//4.Number객체 함수: toExpontial(), toFixed(), toPrecision()
+		// toFixed(): 실수형의 소수점 자리수를 지정하고, 반올림하여 문자열로 반환
+		
+		var number02=333.3456;
+		document.write("toFixed():"+number02.toFixed(2)+"<br/>");
+	}
+	
+	//5.isNaN(): 숫자판별, 숫자이면 false, 숫자가 아니면 true
+	function isNum(){
+		var num=prompt("숫자만 입력하세요!!","");
+		if(num==""||num==null){
+			alert("입력을 일단 해주세요!!");
+		}else{
+			if(isNaN(num)){
+				alert("숫자가 아닙니다. 제발 잘 입력하세요~ㅜㅜ");
+			}else{
+				alert("숫자가 맞습니다. 다음 단계를 진행하세요!!");
+			}
+		}
+	}
+</script>
+</head>
+<body>
+<h1>숫자인지아닌지 판별하기</h1>
+<button onclick="isNum()">숫자판별</button>
+</body>
+</html>
+
+
+
+
+
+

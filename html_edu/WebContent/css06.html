@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>2차원변형및 애니메이션</title>
+<style type="text/css">
+	p{
+		margin:100px;
+		width: 500px;
+		height: 100px;
+		background: orange;
+ 		-webkit-transform:rotate(40deg);  
+  		-webkit-transform:translate(100px,150px);  
+  		-webkit-transform:skew(20deg,15deg);  
+  		-webkit-transform:scale(0.8,0.8);  
+  		transition: background-color 2s, font-size 2s, width 0.5s linear ;
+	}
+	p:hover {
+		width: 1000px;
+		font-size:30px;
+		background-color: blue;
+		color:white;
+	}
+	
+	h1{
+		background-color: green;
+		width: 200px;
+		height: 200px;
+		animation: test1 5s infinite;
+	}
+	
+	@keyframes test1{
+		0%{ -webkit-transform:translate(50px,50px); width:200px; background-color:green;}
+		25%{-webkit-transform:translate(500px,300px); width:100px; background-color:red;}
+		50%{-webkit-transform:translate(150px,100px); width:50px; background-color:yellow;}
+		75%{-webkit-transform:translate(200px,200px); width:300px; background-color:pink;}
+		100%{-webkit-transform:translate(50px,50px); width:200px; background-color:green;}
+	}
+	
+	
+	
+	#spincube div{
+ 		position: absolute; 
+		width: 120px;
+		height: 120px;
+		border: 1px solid black;
+		text-align: center;
+		font-size: 100px;
+		line-height: 120px;
+	}
+	
+	.face1{
+		transform:translateZ(60px);
+	}
+	.face2{
+		transform:rotateY(90deg) translateZ(60px);
+	}
+	.face3{
+		transform:rotateY(180deg) translateZ(60px);
+	}
+	.face4{
+		transform:rotateY(270deg) translateZ(60px);
+	}
+	.face5{
+		transform:rotateX(90deg) translateZ(60px);
+	}
+	.face6{
+		transform:rotateX(270deg) translateZ(60px);
+	}
+	#spincube{
+		-webkit-transform-style: preserve-3d;
+		-webkit-transform:rotateX(45deg) rotateY(45deg);
+		
+	}
+	#container{
+		top:-100px;
+		left:100px;
+		-webkit-transform-style: preserve-3d;
+		position:relative;
+		width:125px;
+		animation: test2 1s linear infinite;
+	}
+
+	@keyframes test2{
+		0%{ -webkit-transform:rotateY(0deg); }
+		50%{ -webkit-transform:rotateY(180deg);}
+		100%{-webkit-transform:rotateY(360deg);}
+	}
+</style>
+</head>
+<body>
+<h1>Animation</h1>
+<p>2차원변형</p>
+<p>2차원변형</p>
+<p>2차원변형</p>
+<p>2차원변형</p>
+<div id="container">
+<div id="spincube">
+	<div class="face1">1</div>
+	<div class="face2">2</div>
+	<div class="face3">3</div>
+	<div class="face4">4</div>
+	<div class="face5">5</div>
+	<div class="face6">6</div>
+</div>
+</div>
+<br><br><br><br><br>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+

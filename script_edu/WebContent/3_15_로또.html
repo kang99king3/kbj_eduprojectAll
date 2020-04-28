@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+
+	onload=function(){
+		var balls=document.getElementsByClassName("ball");
+		var count=1;
+		var ballPx=700;
+		for(var i=0;i<balls.length;i++){
+			balls[i].innerHTML=i+1;
+			balls[i].style.transform="translate("+rnum()+"px,"+rnum()+"px)";
+			balls[i].style.background="rgb("+rnum()+","+rnum()+","+rnum()+")";
+// 			balls[i].onmouseover=function(){
+// 				this.style.transform="translate("+rnum()+"px,"+rnum()+"px)";
+// 			}
+			balls[i].onclick=function(){
+				if(count<=7){
+					if(count==7){
+						document.getElementById("bonusNumer").innerHTML=this.innerHTML;
+						this.innerHTML+="<br/>bonus";
+						this.style.lineHeight="30px";
+					}else{
+						document.getElementById("lottoNumber").innerHTML+=this.innerHTML+" ";						
+					}
+					this.className="selball";
+					this.style.transform="translate("+ballPx+"px,0px)";
+					
+					count++;
+					ballPx+=100;
+				}else{
+					alert("모두 선택하였습니다.");
+					clearInterval(finishShuffle);
+				}
+			}
+		}
+	}
+	
+	function rnum(){
+		return ~~(Math.random()*500);	
+	}
+	
+	var finishShuffle;
+	
+	function lottoShuffle(){
+		var balls=document.getElementsByClassName("ball");
+		finishShuffle=setInterval(function() {
+				for(var i=0;i<balls.length;i++){
+					balls[i].style.transform="translate("+rnum()+"px,"+rnum()+"px)";
+				
+				}	
+		}, 500);
+	}
+
+
+	
+</script>
+<style type="text/css">
+#lottoBox {
+	width: 600px;
+	height: 600px;
+	border: 2px solid red;
+/*  	position: relative;  */
+}
+
+.ball {
+	-webkit-transition: 1s transform;
+	border-radius: 40px;
+	width: 80px;
+	height: 80px;
+	border: 1px solid black;
+	text-align: center;
+	line-height: 80px;
+	transform:translate(20px);
+ 	position: absolute; 
+ 	-webkit-transform-style: preserve-3d;
+}
+
+.selball {
+	-webkit-transition: 1.5s transform;
+	border-radius: 40px;
+	width: 80px;
+	height: 80px;
+	border: 1px solid black;
+	text-align: center;
+	line-height: 80px;
+	position: absolute;
+}
+
+</style>
+</head>
+<body>
+<div id="kk">3</div>
+<fieldset>
+	<legend>로또번호만들기</legend>
+	<span>로또번호:</span><span id="lottoNumber"></span>
+	<span>보너스번호:</span><span id="bonusNumer"></span>
+	<button onclick="lottoShuffle()">로또섞기</button>
+</fieldset>
+<div id="lottoBox">
+	<div class="ball"></div><div class="ball"></div>
+	<div class="ball"></div><div class="ball"></div>
+	<div class="ball"></div><div class="ball"></div>
+	<div class="ball"></div><div class="ball"></div>
+	<div class="ball"></div><div class="ball"></div>
+	<div class="ball"></div><div class="ball"></div>
+	<div class="ball"></div><div class="ball"></div>
+	<div class="ball"></div><div class="ball"></div>
+	<div class="ball"></div><div class="ball"></div>
+	<div class="ball"></div><div class="ball"></div>
+	<div class="ball"></div><div class="ball"></div>
+	<div class="ball"></div><div class="ball"></div>
+	<div class="ball"></div><div class="ball"></div>
+	<div class="ball"></div><div class="ball"></div>
+	<div class="ball"></div><div class="ball"></div>
+	<div class="ball"></div><div class="ball"></div>
+	<div class="ball"></div><div class="ball"></div>
+	<div class="ball"></div><div class="ball"></div>
+	<div class="ball"></div><div class="ball"></div>
+	<div class="ball"></div><div class="ball"></div>
+	<div class="ball"></div>
+	<div class="ball"></div><div class="ball"></div>
+	<div class="ball"></div><div class="ball"></div>
+</div>
+</body>
+</html>
+
+

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>2.변수의 사용</title>
+<script type="text/javascript">
+	var variable=10;//전역변수: 여러함수나 객체에서 접근 가능(공용으로 사용)
+	
+	function test01(){
+		variable+=5;// variable=variable+5;
+		alert(variable);
+	}
+	
+	function test02(){
+		var variable2=10;//지역변수:함수 안에서만 접근가능(함수실행이 종료되면 삭제)
+		variable2+=5;
+// 		alert(variable2);
+		console.log(variable2);
+	}
+	
+	function test03(){
+		var variable3=5;//숫자타입
+		variable3='타입';//문자열(String타입)
+		variable3=[0,3,4,65,7];//배열타입
+		variable3=true;//boolean타입
+		variable3=null;//null타입
+		variable3=function(){
+			alert("함수도 저장");
+			return '리턴값';
+		}
+		alert(typeof variable3);
+	}
+</script>
+</head>
+<body>
+<h1>변수의 사용</h1>
+<dl>
+	<dt>변수의 선언규칙</dt>
+	<dd>1.대소문자구별</dd>
+	<dd>2.영문, _, $로만 시작해야 한다.</dd>
+	<dd>3.영문,_,$,숫자만 포함가능하다.</dd>
+	<dd>4.키워드나 예약어는 사용할 수 없다!!(변수명, 함수명)</dd>
+	<dt>변수의 적용 범위</dt>
+	<dd>1.전역변수<button onclick="test01()">확인</button></dd>
+	<dd>2.지역변수<button onclick="test02()">확인</button> </dd>
+	<dt>변수의 선언과 저장</dt>
+	<dd>1.var 키워드를 사용하여 변수를 선언한다.(let,const)</dd>
+	<dd>2.변수의 타입은 저장되는 타입에 따라서 결정된다.
+		<button onclick="test03()">확인</button>
+	</dd>
+</dl>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,16 @@
+{ 
+	"ROW":[{
+		"EMPLOYEE_ID":100,
+		"LAST_NAME":"King",
+		"EMAIL":"SKING",
+		"PHONE_NUMBER":"515.123.4567",
+		"HIRE_DATE":"1987. 6. 17 오전 12:00:00"
+		},
+		{
+		"EMPLOYEE_ID":100,
+		"LAST_NAME":100,
+		"EMAIL":100,
+		"PHONE_NUMBER":100,
+		"HIRE_DATE":100
+		}]
+}

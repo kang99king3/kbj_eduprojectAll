@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>16.Location객체</title>
+<script type="text/javascript">
+	function locationTest(){
+// 		location.href="js14.html";//이동
+		location.assign("js14.htm");//href속성과 동일한 기능
+// 		location.reload();//새로고침
+		location.replace("js14.html");//이동--> 이력이 남지 않음
+
+	}
+</script>
+</head>
+<body>
+<h1>location객체</h1>
+<a href="js16_Location객체.html#id=hk&pw=1234">전송</a>
+<button onclick="locationTest()">이동</button>
+<hr>
+<script type="text/javascript">
+	document.write("hash:"+location.hash+"<br>");
+	document.write("host:"+location.host+"<br>");
+	document.write("pathname:"+location.pathname+"<br>");
+	document.write("hostname:"+location.hostname+"<br>");
+	document.write("port:"+location.port+"<br>");
+	document.write("protocol:"+location.protocol+"<br>");
+	document.write("search:"+location.search+"<br>");
+	document.write("href:"+location.href+"<br>");
+</script>
+</body>
+</html>
+
+
+
+

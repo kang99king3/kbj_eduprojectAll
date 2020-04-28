@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>float을 활용한 레이아웃 만들기</title>
+<style type="text/css">
+/* 	div{border: 1px dotted gray; } */
+	#main{
+		width: 1400px;
+		margin: 0 auto;
+	}
+	
+	#container{
+/* 		height: 800px; */
+		overflow: auto;
+	}
+	
+	#body01,#body02{
+		height: 700px;
+	}
+	
+	#body01{
+		width: 35%;
+		float: left;
+		height: 600px;
+	}
+	
+	#body02{
+		width: 55%;
+		float:right;
+		height: 600px;
+	}
+	
+	#header,#footer{
+		background: orange;
+	}
+	#footer{
+		text-align: center;
+	}
+</style>
+</head>
+<body>
+<div id="main">
+	<div id="header">
+		<h1>메인화면</h1>
+	</div>
+	<div id="container">
+		<div id="body01">
+			<ul>
+				<li>메뉴1</li>
+				<li>메뉴1</li>
+				<li>메뉴1</li>
+				<li>메뉴1</li>
+				<li>메뉴1</li>
+				<li>메뉴1</li>
+				<li>메뉴1</li>
+			</ul>
+		</div>
+		<div id="body02">body02</div>
+	</div>
+	<div id="footer">
+		<address>웹사이트 운영자<br> 정보 등등</address>
+	</div>
+</div>
+</body>
+</html>
+
+
+
+

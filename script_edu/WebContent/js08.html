@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>8.String객체</title>
+<script type="text/javascript">
+	function strTest01(){
+		//+연산자
+		var string01="string";
+		var string02="test";
+// 		var string03=strTest01+string02;
+		var string03="string"+"test";
+		
+		//concat():여러문자열을 하나의 문자열로 합칠때 사용
+		var newStr="String".concat("test","java","script");
+		alert(newStr);
+		
+		//배열객체의 메서드 join(): 특정 값을 배열요소 사이에 추가하여 문자열로 반환
+		var joinTest=["1","2","3"].join("+");
+		alert(eval(joinTest));
+		
+		//+연산자를 사용할때 문자열을 만나면 모두 문자열로 변환
+		var numVal=12.7;//숫자형
+		var bool=true;//boolena타입
+		var str="숫자:"+numVal+10+"boolean:"+bool;
+		alert(str);
+	}
+
+	function strTest02(){
+		//==:값이 같으면 true, === 연산자: 값과 타입이 모두 일치해야 true반환(엄격한 비교) 
+		var str="한경";
+		var strObj=new String("한경");
+		alert(str===strObj);
+		
+		var num=5;
+		var numStr="5";
+		alert(num===numStr);
+		
+		//match(): 문자열의 패턴을 확인(true/false)
+		var strVal=prompt("당신의 이름은?", "");
+		var span=document.getElementById("cmr");
+		if(strVal.match(/[0-9]/)){
+			alert("숫자를 입력하셨군요... 확인하세요");
+		}else if(strVal=="한경이"){
+			span.innerHTML=strVal+"님 <b>반갑습니다.</b>";
+		}else{
+			span.innerHTML="<b>회원이 아닙니다.</b>";
+		}
+	}
+	
+	function strTest03(){
+		/*
+			문자열에서 원하는 문자열 검색하기
+			indexOf():왼쪽--->오른쪽으로 검색함, 검색된 문자열의 첫글자 인덱스를 반환한다.
+			lastIndexOf():오른쪽---> 왼쪽으로 검색함
+			만약에 검색하는 문자가 존재하지 않으면 -1을 반환한다.
+		*/
+		var strValue="김현우 김태환 김수진 신윤호 장미 김현우 김성수 김해강";
+		var prop=prompt("검색할 이름을 입력하세요", "");
+		if(prop==null||prop==""){
+			alert("입력하세요");
+		}else if(strValue.indexOf(prop)==-1){
+			alert(prop+"는 존재하지 않습니다. 다시 확인하세요");
+		}else{
+			alert("indexOf():"+strValue.indexOf(prop));
+			alert("lastIndexOf():"+strValue.lastIndexOf(prop));
+			alert("indexOf():"+strValue.indexOf(prop,7));
+		}
+		
+	}
+
+	function strTest04(){
+		//substring():문자일을 시작인덱스와 종료 인덱스로 추출
+		//split():문자열 중에 기준이 되는 요소로 나누어 배열로 반환("abc,de,f"-> ["abc","de","f"])
+		var strVal="문자열 추출하기. 관련메서드:indexOf()메서드,substring()메서드.";
+		var sIdx=strVal.indexOf(":");// ":"의 인덱스구하기
+		var eIdx=strVal.lastIndexOf(".");//"."의 인덱스 구하기
+		var result=strVal.substring(sIdx+1, eIdx);
+		alert(result);
+		var splitVal=result.split(",");// ","를 기준으로 잘라서 배열에 담는다
+		alert(splitVal[0]+"/"+splitVal[1]);
+	}
+	
+	var numLen=6;//전역변수:모든 함수에서 공용으로 사용가능
+	   			// 키워드의 개수 제한을 관리하기 위한 변수선언
+	
+	function strTest05(){
+		//입력 최대 개수는 6개로 제한: 7개이상 입력하면 입력못한다고 alert로 알려주고 끝냄
+		//6개이하로 입력한다면, 쉼표로 구분해서 단어를 잘라서  span태그에  출력하세요
+		//출력하는 문자열의 형태는 "<br>키워드:사과<br>키워드:수박<br>키워드:바나나"
+		var prop=prompt("쉼표로 구분하여 키워드를 입력하세요","예시:사과,수박,바나나");
+		
+		if(prop==null||prop==""){
+			alert("정확한 값을 입력하세요");
+		}else{
+			var keyArray=prop.split(",");//["사과","수박","바나나"]배열반환
+			
+			if(keyArray.length<=numLen){
+				var keyword="";
+				for (var i = 0; i < keyArray.length; i++) {
+					keyword+="<br/>키워드:"+keyArray[i];
+				}
+				document.getElementById("key").innerHTML=keyword;
+				//num 입력박스와 버튼을 원상태로 초기화시키기(입력박스disabled,버튼color)
+				document.getElementById("num").disabled="";
+				document.getElementById("num").value="";
+				document.querySelectorAll("#num+input")[0].style.color="black";
+				
+			}else{
+				alert(numLen+"개이하로만 입력하세요");
+			}
+		}
+	}
+	
+	
+	
+	function numSetting(ele){
+		//키워드 제한숫자 입력하는 input객체를 구함
+		var numInput=document.getElementById("num");
+		//input 객체에서 입력값 구함
+		numLen=numInput.value;
+		//input 객체에서 비활성화하기 위해 disabled속성을 정의
+		numInput.disabled="disabled";
+		
+// 		document.getElementById("num").value=10;
+		ele.style.color="red";	
+// 		document.getElementById("num").style.color="red";
+// 		document.querySelectorAll("#num+input")[0].style.color="blue";
+		//비활성화해주는 속성????
+				
+	}
+</script>
+</head>
+<body>
+<h1>문자열 합치기<button onclick="strTest01()">클릭!!</button></h1>
+<h1>문자열 비교하기<button onclick="strTest02()">클릭!!</button>
+	<span id="cmr"></span>
+</h1>
+<h1>부분문자열 검색하기 <button onclick="strTest03()">클릭!!</button> </h1>
+<h1>부분문자열 추출하기 <button onclick="strTest04()">클릭!!</button> </h1>
+<h1>키워드 나누기<button onclick="strTest05()">클릭!1</button> </h1>
+<input type="number" id="num"/>
+<input type="button" value="설정" onclick="numSetting(this)"/>
+
+<span id="key"><br>키워드:사과<br>키워드:수박<br>키워드:바나나</span>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+

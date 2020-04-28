@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>19.select요소</title>
+<script type="text/javascript">
+	//selected: 선택여부(true/false)
+	//selectedIndex:선택한 option태그의 인덱스를 반환
+	//options: option태그들을 선택해서 배열로 반환  ex) body, forms, options
+	function show(){
+		var food=document.getElementsByName("food")[0];
+		var idx=food.selectedIndex;//선택된 option태그의 인덱스
+// 		alert(food.options[idx].value);
+		food.options[idx].value="치킨";
+		food.options[idx].innerHTML="치킨";
+		food.options[idx].style.color="red";
+	}
+</script>
+</head>
+<body>
+<h1>가장 먹고 싶은 음식은?</h1>
+<form action="">
+	<select name="food" onchange="show()" >
+		<option value="라면">라면</option>
+		<option value="만두">만두</option>
+		<option value="불고기" selected="selected">불고기</option>
+		<option value="국수">국수</option>
+		<option value="피자">피자</option>
+	</select>
+	<h2>리스트로 만들기(다중선택)</h2>
+	<select name="food" multiple="multiple"  size="5">
+		<option value="라면">라면</option>
+		<option value="만두">만두</option>
+		<option value="불고기">불고기</option>
+		<option value="국수">국수</option>
+		<option value="피자">피자</option>
+	</select>
+	<input type="button" value="선택" onclick="show2()"/>
+</form>
+<script type="text/javascript">
+	function show2(){
+		var food=document.getElementsByName("food")[1];
+		var str="";
+		for (var i = 0; i < food.options.length; i++) {
+			if(food.options[i].selected){
+				str+=food.options[i].value+" ";
+			}
+		}
+		alert(str);
+	}
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>26.DOM 입력값 테이블로 표현하기</title>
+<script type="text/javascript" src="js/createtr.js"></script>
+<script type="text/javascript">
+	function tableVal(){
+		//입력된 4개의 값을 구해서 테이블에 추가
+		//1. 입력된 4개의 값을 구하자
+		//2. 4개의 값에 대한 tr,td를 만들어야 됨
+		// --> tr객체 안에 td객체 4개를 넣어주면 됨--> tr객체만 tbody에 안에 추가
+		
+// 		var formObj=document.forms[0]
+		var formObj=document.formInfo;//form태그 객체 생성
+		//입력값을 구해서 배열에 저장하면 여러개의 값을 한번에 관리하기 편하지요!
+		var vals=[formObj.id.value,
+				  formObj.pw.value,
+				  formObj.addr.value,
+				  formObj.phone.value
+				 ];
+// 		alert(vals[0]+",개수:"+vals.length);
+		
+		//유효값처리
+		var inputEle=document.getElementsByClassName("a");
+		var msg="값을 입력하세요! ";
+		for (var i = 0; i < inputEle.length; i++) {
+			if(inputEle[i].value==null||inputEle[i].value==""||inputEle[i].value==undefined){
+				msg+=inputEle[i].parentNode.previousElementSibling.textContent;
+				
+			}
+			
+		}
+		//msg의 길이가 기존 10에서 커졌다면 입력값이 없다는 의미--> return으로 함수 종료
+		if(msg.length>10){
+			alert(msg);
+			return;
+		}
+		
+		//회원정보가 10개가 넘어가면 더이상 입력안되도록 구현하세요
+		var tbody=document.getElementById("addtr");
+		if(tbody.children.length<10){
+			var tr=creatTr(vals);
+			tbody.appendChild(tr);			
+		}else{
+			var msg=document.getElementById("msg");
+				msg.textContent="10개까지만 입력가능합니다.!!";
+				msg.style.color="red";
+		}
+	}
+	
+
+	//table요소의 tr과td요소를 생성하는 하나의 행을 만드는 기능
+	//파라미터 타입:배열, 반환타입은 Element 
+// 	function creatTr(arrayVal){
+// 		var tr=document.createElement("tr");//<tr><td>text</td><td>text</td><td>text</td><td>text</td></tr>
+// 		for (var i = 0; i < arrayVal.length; i++) {
+// 			var td=document.createElement("td");//<td></td>
+// 			td.textContent=arrayVal[i];//<td>text</td>
+// 			tr.appendChild(td);
+// 		}
+// 		return tr;
+// 	}
+</script>
+</head>
+<body>
+<form action="" name="formInfo">
+	<table border="1">
+		<caption>회원정보입력</caption>
+		<col width="100px"/><col width="300px" />
+		<tr>
+			<td>아이디</td>
+			<td><input type="text" name="id" class="a"/></td>
+		</tr>
+		<tr>
+			<td>비밀번호</td>
+			<td><input type="password" name="pw" class="a"/></td>
+		</tr>
+		<tr>
+			<td>주소</td>
+			<td><input type="text" name="addr" class="a"/></td>
+		</tr>
+		<tr>
+			<td>전화번호</td>
+			<td><input type="text" name="phone" class="a"/></td>
+		</tr>
+		<tr>
+			<td colspan="2">
+				<input id="addBtn" type="button" value="추가" onclick="tableVal()"/>
+				<span id="msg"></span>
+			</td>
+		</tr>
+	</table>
+</form>
+<hr/>
+<div id="addTable">
+	<table border="1">
+		<col width="100px">
+		<col width="100px">
+		<col width="300px">
+		<col width="100px">
+		<thead>
+			<tr>
+				<th>아이디</th>
+				<th>비밀번호</th>
+				<th>주소</th>
+				<th>전화번호</th>
+			</tr>
+		</thead>
+		<tbody id="addtr">
+			
+		</tbody>
+	</table>
+</div>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+

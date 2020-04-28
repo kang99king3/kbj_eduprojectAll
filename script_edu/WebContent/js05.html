@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>5.형변환함수</title>
+<script type="text/javascript">
+	function numTest(){
+		var val=document.getElementById("num1");
+		var numVal=Number(val.value);//숫자형으로 변환
+		alert(numVal+5);// "5"+5="55": 문자열을 만나면 모두 문자열로 변환
+	}
+	
+	function intTest(doc){
+		//dom탐색메서드 사용해서 구현하기
+		var val=document.getElementById("int1");
+		var intVal=parseInt(val.value);
+
+		//파라미터로 객체를 전달받아 구현하기(태그의 ID값으로 아큐먼트 전달)
+// 		var intVal=parseInt(doc.value);
+// 		doc.style.backgroundColor="red";
+// 		doc.disabled="disabled";
+		
+		alert(intVal+5);
+	}
+	
+	function floatTest(doc){
+		var floatVal=parseFloat(doc.value);
+		alert(floatVal+5);
+	}
+</script>
+</head>
+<body>
+<h1>1.숫자형 형변환 Number()함수</h1>
+<p>문자열이면서, 정수형태든 실수형태든 숫자형으로 반환해주는 함수</p>
+<input type="text" name="num" id="num1" />
+<button onclick="numTest()">확인</button>
+
+<h1>2.정수형 형변환 parseInt()함수</h1>
+<p>문자열이면서, 정수형태든 실수형태든 정수형으로 반환해주는 함수</p>
+<input type="text" name="int" id="int1" />
+<button onclick="intTest(int1)">확인</button>
+
+<h1>3.실수형 형변환 parseFloat()함수</h1>
+<p>문자열이면서, 정수형태든 실수형태든 실수형으로 반환해주는 함수</p>
+<input type="text" name="float" id="float1" />
+<button onclick="floatTest(float1)">확인</button>
+
+<h1>4.검증함수 eval()함수</h1>
+<p>문자열로 된 코드를 자바스크립트로 읽는다.(해석한다.파싱한다.)</p>
+<input type="text" name="evalue" id="evalue1" placeholder="예) 5+8" />
+<button onclick="evalTest(evalue1)">확인</button>
+<span></span> 
+
+<script type="text/javascript">
+	function evalTest(doc){ // doc는 input 태그
+		var val=doc.value;//"5+8"문자열이 저장됨
+		if(confirm("작성하신 코드가 맞습니까?"+val)){
+			var result=eval(val);
+			document.getElementsByTagName("span")[0].innerHTML=
+														"계산결과:"+result;
+			                                 // <span>result</span>			
+		}else{
+			//만약 사용자가 입력한 내용을 취소하고 다시 입력한다면
+			//기존에 입력한 내용은 지우고, 바로 입력할 수 있게 커서를 넣어주기
+			doc.value="";//입력내용 초기화
+			doc.focus();//마우스커거 넣기
+		}
+		
+	}
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

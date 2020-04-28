@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>21.DOM생성하기</title>
+<script type="text/javascript">
+	//createElement(String tagname): 엘리먼트 객체 생성
+	//createAttribute(String attrName): 속성 객체 생성
+	//createTextNode(String text): text객체 생성
+	
+	//속성추가: setAttribute(String attrName, String attrValue)
+	//        setAttributeNode(Attr 객체명)
+	function eleCreate(){
+		//<div style="border:2px solid red;">엘리먼트생성메서드</div>
+		var div=document.createElement("div");//1.<div></div>
+		var attr=document.createAttribute("style");//2.style=""
+		var txt=document.createTextNode("엘리먼트생성메서드");//3.Text객체생성
+		//attr속성에 값을 저장한다.
+		attr.nodeValue="border:2px solid red;";
+// 		alert(attr.nodeValue);
+		div.setAttributeNode(attr);//<div style="border~~"></div>
+		div.appendChild(txt);//<div style="border~~">엘리먼트생성메서드</div>
+		//속성을 바로 추가하기
+		div.setAttribute("class", "createTest");
+		
+		//완성된 div객체를 body에 추가한다.
+		document.body.appendChild(div);
+	}
+	var count=0;
+	function eleCreate02(){
+		var div=document.createElement("div");
+		div.setAttribute("style", "border:2px solid blue");
+		div.textContent="엘리먼트생성메서드  "+(count++);
+		div.className="createTest";
+		div.id="aa";
+		div.title="요소가 추가되요";
+// 		document.body.appendChild(div);
+		document.getElementsByTagName("div")[0].appendChild(div);
+	}
+	function eleRemove(){
+		var div=document.getElementsByTagName("div")[0];
+		div.removeChild(div.firstChild);
+	}
+	
+</script>
+<style type="text/css">
+	.createTest{
+		background-color: yellow;
+	}
+</style>
+</head>
+<body>
+<button onclick="eleCreate02()">엘리먼트생성하기</button>
+<button onclick="eleRemove()">엘리먼트삭제하기</button>
+<div style="border: 1px dotted red; padding:5px;">
+	
+</div>
+</body>
+</html>
+
+
+
+
+
+
+
+
+

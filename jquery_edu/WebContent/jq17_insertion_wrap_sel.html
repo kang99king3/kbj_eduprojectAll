@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="js/jquery-3.4.1.js"></script>
+<style type="text/css">
+	#menu{
+		background-color: orange; text-align: right;
+	}
+	#menu > div{
+		display: inline-block;
+		padding: 5px 10px 5px;
+	}
+	a{
+		text-decoration: none;
+		font-size: 20pt;
+	}
+	.box{border: 2px solid red;}
+</style>
+<script type="text/javascript">
+	/*  타겟을 감싸는 요소를 추가한다.---> 부모요소를 추가한다.
+		wrap() : 부모추가   -> $(target).wrap(추가할요소)
+		unwrap(): 부모삭제  -> $(target).wrap(삭제할 요소)
+	*/
+	//1.class명이 sub_menu인 div를 클릭했을때 클릭한  div요소에 부모로 <div class="box">추가하기
+	//2.클릭한 div만 박스가 추가되어 있게 하기 , 클릭한거 제외한 div요소는 언박싱되게 하기 
+	
+	$(function(){
+		$(".sub_menu").click(function(){
+			//타겟이 배열이지만 jquery가 알아서 꺼내서 적용시켜줌
+			$(".sub_menu").unwrap(".box");
+			$(this).wrap("<div class='box'></div>");
+		});
+	});
+</script>
+</head>
+<body>
+<div id="menu">
+	<div class="sub_menu">
+		<a href="#">회사소개</a>
+	</div>
+	<div class="sub_menu">
+		<a href="#">솔루션</a>
+	</div>
+	<div class="sub_menu">
+		<a href="#">고객</a>
+	</div>
+	<div class="sub_menu">
+		<a href="#">인재채용</a>
+	</div>
+</div>
+</body>
+</html>
+
+
+
+
+
+
+
+
