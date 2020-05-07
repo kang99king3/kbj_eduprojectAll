@@ -3,6 +3,7 @@ package com.hk.board.controller;
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
 import java.net.URLEncoder;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Optional;
 
@@ -92,6 +93,28 @@ public class HkController {
 		}else {	
 			return "redirect:boarddetail.do?seq="+dto.getSeq();			
 		}
+	}
+	
+	@RequestMapping(value = "/delBoard.do", method = RequestMethod.GET)
+	public String delBoard(int seq, Model model) throws UnsupportedEncodingException {
+		logger.info("글삭제");
+		try {
+			hkService.deleteById(seq);			
+		} catch (Exception e) {
+			e.printStackTrace();
+			String msg=URLEncoder.encode("글삭제실패","utf-8");
+			return "redirect:error.do?msg="+msg;			
+		}
+		return "redirect:boardlist.do";
+	}
+	
+	@RequestMapping(value = "/muldel.do", method = RequestMethod.POST)
+	public String mulDel(String[] chk, Model model) throws UnsupportedEncodingException {
+		logger.info("여러글삭제");
+		
+		hkService.muldel(chk);
+		
+		return "redirect:boardlist.do";
 	}
 	
 	@RequestMapping(value = "/error.do", method = RequestMethod.GET)

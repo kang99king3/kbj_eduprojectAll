@@ -18,9 +18,9 @@ import lombok.Data;
 @Data
 @Entity(name="hkboard") //@Entity를 설정한 클래스는 jpa가 관리하는 클래스
 @SequenceGenerator(name="HKBOARD_SEQ_GENERATOR",
-sequenceName="HKBOARD_SEQ",
-initialValue=1,
-allocationSize=1) 
+				   sequenceName="HKBOARD_SEQ",
+				   initialValue=1,
+				   allocationSize=1) 
 public class HkDto {
 	//기본키 설정(@Id)
 	//기본키의 값이 자동생성되도록 설정(@Generated..)
@@ -38,6 +38,19 @@ public class HkDto {
 	@Column(nullable=false,columnDefinition="date default sysdate")
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date regdate = new Date();
+
+	public HkDto() {
+		
+	}
+	
+	public HkDto(int seq, String id, String title, String content, Date regdate) {
+		super();
+		this.seq = seq;
+		this.id = id;
+		this.title = title;
+		this.content = content;
+		this.regdate = regdate;
+	}
 	
 	
 	
