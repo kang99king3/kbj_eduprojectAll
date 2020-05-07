@@ -49,6 +49,13 @@
 				<td colspan="4">---작성된 글이 없습니다.</td>
 			</tr>
 			<tr>
+				<td colspan="5" style="text-align: center;">
+					<th:block th:each="num : ${#numbers.sequence(1,pcount)}">
+						<a th:href="@{/boardlist.do(page=${num})}" th:text="${num}"></a>		
+					</th:block>
+				</td>
+			</tr>
+			<tr>
 				<td colspan="5">
 					<input type="button" value="글추가" onclick="insertForm()"/>
 					<input type="submit" value="글삭제"/>			

@@ -3,6 +3,8 @@ package com.hk.board.daos;
 import java.util.List;
 import java.util.Optional;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -16,6 +18,9 @@ public interface IHkDao extends JpaRepository<HkDto, Integer> {
 	
 	//글목록조회
 	public List<HkDto> findAll();
+	
+	@Override
+	public Page<HkDto> findAll(Pageable request);
 	
 	//글상세보기
 //	@Query("select seq, id,title,content,regdate from hkboard where seq=?1")

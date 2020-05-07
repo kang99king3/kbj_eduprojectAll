@@ -37,10 +37,13 @@ public class HkController {
 	}
 	
 	@RequestMapping(value = "/boardlist.do", method = RequestMethod.GET)
-	public String boardlist(Model model) {
+	public String boardlist(Model model,int page) {
 		logger.info("글목록조회하기");
-		List<HkDto>list=hkService.findAll();
+//		List<HkDto>list=hkService.findAll();
+		List<HkDto>list=hkService.findAllP(page);
+		int pcount=hkService.pCount(10);
 		model.addAttribute("list", list);
+		model.addAttribute("pcount", pcount);
 		return "boardlist";
 	}
 	
