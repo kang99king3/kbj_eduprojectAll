@@ -23,18 +23,21 @@ public class HkService{
 		return ihkDao.findAll();
 	}
 	
-	public List<HkDto> findOne(String seq){
-		List<HkDto> list=ihkDao.findAll(seq);
-		return list;
+	public HkDto findDetail(int seq){
+		Optional<HkDto> list=ihkDao.findById(seq);
+		HkDto dto=null;
+		if(list.isPresent()) {
+			dto=list.get();
+		}
+		return dto;
 	}
 	
 	public HkDto save(HkDto dto){
-		
-		return null;
+		return ihkDao.save(dto);
 	}
 	
-	public void deleteById(Long arg0){
-		
+	public void deleteById(int seq){
+		ihkDao.deleteById(seq);
 	}
 	
 	

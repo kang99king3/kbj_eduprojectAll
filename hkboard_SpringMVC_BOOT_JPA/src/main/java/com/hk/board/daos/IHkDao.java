@@ -11,16 +11,16 @@ import org.springframework.stereotype.Repository;
 import com.hk.board.dtos.HkDto;
 
 @Repository
-public interface IHkDao extends JpaRepository<HkDto, Long> {
+public interface IHkDao extends JpaRepository<HkDto, Integer> {
 	//JpaRepository<Dto타입,pk값의 타입>
 
 	public List<HkDto> findAll();
 	
-	@Query("select seq, id,title,content,regdate from hkboard where seq=?1")
-	public List<HkDto> findAll(String seq);
+//	@Query("select seq, id,title,content,regdate from hkboard where seq=?1")
+	public Optional<HkDto> findById(int seq);
 	
-	public HkDto save(HkDto dto) ;
+	public <S extends HkDto> S save(S dto);
 	
-	public void deleteById(Long arg0) ;
+	public void deleteById(int seq) ;
 	
 }
