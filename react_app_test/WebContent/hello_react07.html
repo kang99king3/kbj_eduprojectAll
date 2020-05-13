@@ -33,20 +33,23 @@
 		constructor(props){
 			super(props)
 			this.state={checked:"checked"}
-			//this.clickhandler=this.clickHandler.bind(this)
+			this.clickHandler=this.clickHandler.bind(this)
+		}
+		
+		//render() 안에 작성안하고 밖에 작성하게 되면 this가 전달되지 않아 
+		//contructor에서 this를 bind해줘야 함.
+		clickHandler(){
+				
+			if(this.state.checked==="checked"){
+				this.setState({checked:""})
+			}else{
+				this.setState({checked:"checked"})
+			}
 		}
 
 		render(){
 				
-			const clickHandler = (e) => {
-			
-				if(this.state.checked==="checked"){
-					this.setState({checked:""})
-				}else{
-					this.setState({checked:"checked"})
-				}
-			}
-			return (<input onClick={clickHandler} type="checkbox"  checked={this.state.checked}/>)
+			return (<input onClick={this.clickHandler} type="checkbox"  checked={this.state.checked}/>)
 		}
 	}
 	
