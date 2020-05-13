@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="https://unpkg.com/react@15/dist/react.min.js"></script>
+<script type="text/javascript" src="https://unpkg.com/react-dom@15/dist/react-dom.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.38/browser.min.js"></script>
+
+</head>
+<body>
+<div id="root"></div>
+<script type="text/babel">
+	class Hello extends React.Component{
+		constructor(props){
+			super(props)
+			//this.clickHandler=this.clickHandler.bind(this)
+		}
+		render(){
+			const clickHandler= (e) => {
+				alert("kk")
+			}
+			return <p onClick={clickHandler}>{this.props.name}</p>
+		}
+	}	
+	ReactDOM.render(<Hello name="a" />,document.getElementById('root'))
+</script>
+
+</body>
+</html>
+
+
+
+
+
