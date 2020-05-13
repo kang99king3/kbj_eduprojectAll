@@ -7,13 +7,7 @@
 <script type="text/javascript" src="https://unpkg.com/react-dom@15/dist/react-dom.min.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.38/browser.min.js"></script>
 <style type="text/css">
-	table  {
-		border:1px solid black;
-		border-collapse: collapse;
-	}
-	table tr,table td{
-		border:1px solid black;
-	}
+	
 </style>
 </head>
 <body>
@@ -21,38 +15,32 @@
 <div id="disp"></div>
 <div id="table"></div>
 <script type="text/babel">
-	//ReactDOM.render(tag,target)
-	ReactDOM.render(
-	  <h1>Hello, world!!</h1>,
-	  document.getElementById("root")
+	const TitleParts = (props) => (
+		<div style={{backgroundColor:'red',color:'white'}} > 
+			<h3>{props.title}</h3>
+		</div>
 	)
 
-	const root=document.querySelector("#disp")
-	const name='한경'
-	const styleProp={'color':'red'}
-	const msg=getGreeting()
-	ReactDOM.render(msg,root)
-	function getGreeting(){
-		const r=Math.floor(Math.random()*3)
-		if(r===0) return <div style={styleProp}><p>{name}오늘도 즐거운 하루 되세요</p><p>하이</p></div>
-		if(r===1) return <p>{name}안녕하세요</p>
-		if(r===2) return <p>{name}날씨가 좋네요</p>
-	}
-	const table=document.getElementById("table")
-	
-	ReactDOM.render(tableList(),table)
-	function tableList(){
-	  return (
-		<div>
-	    	<table>
-				<tr><td>안녕</td><td>안녕</td></tr>
-        	</table>
+	const ContentParts = (props) => (
+		<div style={{border:'1px solid blue',margin:'15px'}} > 
+			<h3>{props.body}</h3>
 		</div>
-	  )
-	}
+	)
 
-	const e=React.createElement("h1",{id:"hk"},"제목")
-	ReactDOM.render(e,document.getElementById("t"))
+	const Book=(props) => (
+		<div>
+			<TitleParts title={props.title} />
+			<ContentParts body={props.body} />
+		</div>
+	)
+	ReactDOM.render(
+		<div>
+			<Book title="삼국지" body="옛날 중국 이야기"/>
+			<Book title="민수기" body="옛날 이스라엘 이야기"/>
+			<Book title="서유기" body="원숭이가 활약하는 이야기"/>
+		</div>
+		,document.getElementById("root")
+	)
 </script>
 <div id="t"></div>
 </body>

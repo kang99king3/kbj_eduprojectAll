@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="https://unpkg.com/react@15/dist/react.min.js"></script>
+<script type="text/javascript" src="https://unpkg.com/react-dom@15/dist/react-dom.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.38/browser.min.js"></script>
+</head>
+<body>
+<div id="root"></div>
+<script type="text/babel">
+	class RList extends React.Component{
+		render(){
+			const items = this.props.items.split(",")
+			const itemsObj=items.map(
+								(e) => {return <li>{e}</li>}
+							)
+			let title=this.props.title
+			if(!title) title="LIST"
+			return (<div><h3>{title}</h3><ul>{itemsObj}</ul></div>)
+		}
+	}
+
+	ReactDOM.render(<div>
+					<RList title="Colors" items="Red,Green,Blue,White" />
+					<RList title="Foods" items="국수,불고기,라면,만두,삼겹살"/>
+					</div>,
+					document.getElementById("root"))
+
+	
+</script>
+</body>
+</html>
+
+
+
+
+
