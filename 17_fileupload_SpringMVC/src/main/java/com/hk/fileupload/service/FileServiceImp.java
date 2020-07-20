@@ -31,7 +31,7 @@ public class FileServiceImp implements IFileService{
 		
 		//요청파일 가져오기
 		MultipartFile multiFile=multi.getFile("filename");
-	
+				List<MultipartFile> files=multi.getFiles("filename");
 		//---DB에 파일정보를 저장하기 위한 코드 작성
 		//1.요청한 파일에서 원본파일 이름 구하기: originName구하기
 		String originName=multiFile.getOriginalFilename();
