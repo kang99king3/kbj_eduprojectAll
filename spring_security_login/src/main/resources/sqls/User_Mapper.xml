@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="com.hk.board">
+
+	<resultMap type="com.hk.board.dtos.UserDto" id="userDtoMap">
+		<result property="id" column="ID"/>
+		<result property="name" column="name"/>
+		<result property="password" column="password"/>
+		<result property="address" column="address"/>
+		<result property="phone" column="phone"/>
+		<result property="emain" column="emain"/>
+		<result property="enabled" column="enabled"/>
+		<result property="role" column="role"/>
+		<result property="regdate" column="regdate"/>
+		<collection property="roles" javaType="List" column="role" ofType="String">
+			<result property="roles" column="role" />
+		</collection>
+	</resultMap>
+
+	<select id="getUserById" parameterType="String" resultMap="userDtoMap">
+		SELECT ID,NAME, PASSWORD,ADDRESS,PHONE,EMAIL, ENABLED, 'ROLE_'||ROLE AS ROLE, REGDATE
+		 FROM USERINFO WHERE ID = #{id}
+	</select>
+	
+	<insert id="insertUser" parameterType="userDto">
+		INSERT INTO USERINFO VALUES(#{id},#{name},#{password},#{address},
+									#{phone},#{email},'N','USER',SYSDATE)
+	</insert>
+	
+	
+</mapper>
+
+                   
+
+
+
+
+
+
+
+
+
+
+
+
