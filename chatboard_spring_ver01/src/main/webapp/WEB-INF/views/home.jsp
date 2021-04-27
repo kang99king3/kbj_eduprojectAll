@@ -27,10 +27,15 @@
 	</style>
 </head>
 <body onbeforeunload="chatRoomClose()">
+<!-- <body> -->
 <script type="text/javascript">
+	
+	
+	
 	var ws;//웹소켓 객체 변수
-	var wsUri = "ws://192.168.3.102:8090/chatboard_spring_ver01/chatboard";
+// 	var wsUri = "ws://192.168.4.166:8090/chatboard_spring_ver01/chatboard";
 // 	var wsUri = "ws://localhost:8090/chatboard_spring_ver01/chatboard";
+	var wsUri = "ws://localhost:8090/chat/chatboard";
 	function openSocket(){
 		//웹소켓이 생성 되어 있다면 다시 객체를 생성하지 않는다.
 		 if(ws!=null && ws.readyState!=WebSocket.CLOSED){
@@ -42,7 +47,7 @@
 		
 		//웹소켓 연결되면 실행
 		ws.onopen=function(event){
-
+// 			alert("채팅실행");
 		}
 		
 		//웹소켓 서버에서 메시지 받으면 실행
@@ -54,6 +59,10 @@
 		
 		//웹소켓 연결 종료되면 실행
 		ws.onclose=function(){
+			$.ajax({
+				url:"chatOut.do",
+				async:false
+			});
 			ws=null;//웹소켓 연결 끊고 null로 초기화
 // 			alert("채팅종료");
 		}
@@ -101,12 +110,14 @@
 			url:"chatOut.do",
 			async:false
 		});
+	
 		//채팅창이 닫히면 메인창에 클릭 버튼 활성화
-		opener.document.getElementById("chatStart_btn")
-		.disabled="";
+// 		opener.document.getElementById("chatStart_btn")
+// 		.disabled="";
 	}
 	
 	$(function(){
+		
 		//채팅창이 열리면 메인창에 클릭 버튼 비활성화
 // 		opener.document.getElementById("chatStart_btn")
 // 		.disabled="disabled";

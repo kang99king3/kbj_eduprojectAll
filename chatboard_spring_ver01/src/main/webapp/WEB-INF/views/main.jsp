@@ -8,7 +8,7 @@
 <title>Insert title here</title>
 <script type="text/javascript">
 	function chatWin(){
-		open("home.do","채팅장"," resizable=no,width=450px,height=600px");
+		open("home.do?id=${sessionScope.userId}","채팅장"," resizable=no,width=450px,height=600px");
 	}
 </script>
 </head>

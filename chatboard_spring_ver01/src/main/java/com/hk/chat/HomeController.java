@@ -55,7 +55,7 @@ public class HomeController implements ServletConfigAware
 		return "main";
 	}
 	@RequestMapping(value = "/home.do")
-	public String home(Locale locale,HttpServletRequest request) {
+	public String home(Locale locale,HttpServletRequest request,String id) {
 		logger.info("채팅창이동 {}.", locale);
 		//로그인 한 userId를 담고 있는 List객체를 servletContext에서 구한다.
 		List<String>userList=(List<String>)application.getAttribute("userlist");
@@ -64,16 +64,16 @@ public class HomeController implements ServletConfigAware
 			userList=new ArrayList<>();//새로 생성해주고
 			
 			//채팅접속한 아이디를 userList에 추가한다.
-			userList.add((String)request.getSession().getAttribute("userId"));
-			
+//			userList.add((String)request.getSession().getAttribute("userId"));
+			userList.add(id);
 			//추가한 userList를 servletContext에 담는다.
 			application.setAttribute("userlist", userList);
 			
 		}else { //처음이 아니라면 
 			
 			//채팅접속한 아이디를 userList에 추가한다.
-			userList.add((String)request.getSession().getAttribute("userId"));
-			
+//			userList.add((String)request.getSession().getAttribute("userId"));
+			userList.add(id);
 			//추가한 userList를 servletContext에 담는다.
 			application.setAttribute("userlist", userList);
 		}
@@ -95,7 +95,7 @@ public class HomeController implements ServletConfigAware
 		if(userList!=null) {//userList에 저장된 아이디가 있다면
 			userList.remove(userId);//userList에서 종료할 해당 사용자 아이디를 삭제			
 		}
-		
+		System.out.println("userList.toString():"+userList.toString());
 		//종료한 사용자 아이디를 제거한 userList를 다시 servletContext에 담는다.(사용자 갱신)
 	    application.setAttribute("userlist", userList);
 	    
@@ -114,7 +114,7 @@ public class HomeController implements ServletConfigAware
 		//맵에 userList 객체 담기
 		Map<String, List<String>> map=new HashMap<>();
 		map.put("userlist", userList);
-
+		logger.info("list에 남아있는 사용자:"+userList.toString());
 		//요청한 body로 던진다~~~
 		return map;
 	}

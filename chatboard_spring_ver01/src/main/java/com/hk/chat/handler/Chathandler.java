@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.socket.CloseStatus;
@@ -73,7 +75,7 @@ public class Chathandler extends TextWebSocketHandler{
 		String userId=(String)session.getAttributes().get("userId");
 		
 		for (WebSocketSession ws : sessionList) {
-			ws.sendMessage(new TextMessage("<div>---"+userId+"님이 퇴장하셨습니다.---</div>"));
+			ws.sendMessage(new TextMessage("<div class='f'>---<span>"+userId+"</span>님이 퇴장하셨습니다.---</div>"));
 		}
 	}
 	
