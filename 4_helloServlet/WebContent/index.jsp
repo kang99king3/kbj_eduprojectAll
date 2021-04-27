@@ -8,6 +8,7 @@
 <title>Insert title here</title>
 </head>
 <body>
+<script type="text/javascript" src="http://www.mediamixad.com/ad/webad?code=1368409904"></script>
 <form action="HelloServletOld.do" method="post">
 	<input type="text" name="param" value="한글"/>
 	<input type="submit" value="전송"/>

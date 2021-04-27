@@ -9,7 +9,7 @@
 
 	<context:component-scan base-package="com.hk.board" />
 <!-- 검사 URL -->
-    <security:http use-expressions="true">
+    <security:http auto-config="true" use-expressions="true">
 <!--         <security:custom-filter ref="authenticationFilter" before="FORM_LOGIN_FILTER"/> -->
 
         <security:intercept-url pattern="/login/loginForm.do" access="permitAll" />

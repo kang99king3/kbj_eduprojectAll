@@ -1,5 +1,6 @@
 package com.hk.board.providers;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +10,7 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Component;
@@ -47,9 +49,14 @@ public class CustomAuthenticationProvider implements AuthenticationProvider{
 //		      throw new BadCredentialsException("not matching username or password");
 //		    }
 
-		    List<GrantedAuthority> authorities = (List<GrantedAuthority>) userInfo.getAuthorities();
-
-		    return new UsernamePasswordAuthenticationToken(userInfo.getId(),null,authorities);
+//		    List<GrantedAuthority> authorities = (List<GrantedAuthority>) userInfo.getAuthorities();
+		    System.out.println("dd "+userInfo.getAuthorities());
+		    ArrayList<SimpleGrantedAuthority> grants = new ArrayList<SimpleGrantedAuthority>();
+	        
+	        
+	        grants.add(new SimpleGrantedAuthority("ROLE_USER"));
+	        
+		    return new UsernamePasswordAuthenticationToken(userInfo.getId(),null,grants);
 	}
 
 	private boolean matchPassword(String password, Object credentials) {

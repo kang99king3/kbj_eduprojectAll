@@ -96,7 +96,7 @@
 				alert("최소 하나이상 체크하세요!!");
 				location.href="hkcontroller.jsp?command=boardlist";
 			</script>
-			<%
+			<% 
 		}else{
 			boolean isS=dao.mulDel(seqs);
 			if(isS){

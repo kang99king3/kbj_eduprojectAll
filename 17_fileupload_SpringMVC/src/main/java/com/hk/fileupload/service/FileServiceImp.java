@@ -46,9 +46,11 @@ public class FileServiceImp implements IFileService{
 		int fileSize=(int)multiFile.getSize();
 		
 		//4.파일객체구하기
-		String path="D:/workspace_20191217_web/"
-				+ "17_fileupload_SpringMVC/src/main/webapp/upload/";
-		File f=new File(path+storedName);
+//		String path="D:/workspace_20191217_web/"
+//				+ "17_fileupload_SpringMVC/src/main/webapp/upload/";
+		String path=request.getSession().getServletContext().getRealPath("upload");
+		System.out.println(path);
+		File f=new File(path+"/"+storedName);
 		
 		boolean isS=false;
 		try {

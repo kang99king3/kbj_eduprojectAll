@@ -13,6 +13,7 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.apache.commons.collections.map.HashedMap;
 
@@ -50,8 +51,11 @@ public class AnsController extends HttpServlet {
 		String command=request.getParameter("command");
 		
 		AnsDao dao=new AnsDao();
-		
+//		HttpSession session=request.getSession();
 		if(command.equals("boardlist")) {
+			
+			//session 이용하기
+//			session.removeAttribute("readcount");
 			
 			//글목록을 요청하면 쿠키삭제하기
 			Cookie cookie=getCookie("rseq", request);
@@ -92,6 +96,12 @@ public class AnsController extends HttpServlet {
 			
 //			String s=String.valueOf(seq);
 //			String ss=seq+"";
+			
+			//session 이용하기
+//			if(session.getAttribute("readcount")==null) {
+//				request.getSession().setAttribute("readcount", "readcount");
+//				dao.readCount(seq);
+//			}
 			
 			//쿠키의 값들을 가져오기(반환타입:배열)
 			Cookie[] cookies=request.getCookies();
