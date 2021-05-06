@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"%>
 <%request.setCharacterEncoding("utf-8"); %>
 <%response.setContentType("text/html; charset=utf-8"); %>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,10 +11,11 @@
 <h1>로그인</h1>
 <div>
 	<form action="login.do" method="post">
-		<label>아이디:</label><input type="text" name="id"/>
+		<label>아이디:</label><input type="text" name="member_id"/>
 		<input type="submit" value="로그인"/>	
 	</form>
 </div>
-<c:url value="" />
+
+
 </body>
 </html>
